@@ -6,7 +6,7 @@
 
 ## 명령어
 - 테스트: node --test test/
-- 실행: index.html 을 브라우저로 연다 (서버 없음). 필요하면 python3 -m http.server 8000
+- 실행: `python3 -m http.server 8000` 실행 후 `http://localhost:8000/` 를 연다. index.html 직접 열기(file://)는 지원하지 않는다 (ES module CORS).
 - 커밋: goal 하나에 하나. 메시지는 goal-N: / replan-N: / design-vN: / fix-N:
 
 ## 코드 규칙

@@ -1,59 +1,71 @@
 {
   "version": 1,
   "active": true,
-  "skill": "deep-interview",
-  "phase": "handoff",
-  "updated_at": "2026-11-12T04:36:06.366Z",
+  "skill": "ultragoal",
+  "phase": "blocked",
+  "updated_at": "2026-11-12T05:33:49.963Z",
   "session_id": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919",
   "active_skills": [
     {
-      "skill": "deep-interview",
-      "phase": "handoff",
+      "skill": "ultragoal",
+      "phase": "blocked",
       "active": true,
-      "activated_at": "2026-11-12T04:36:06.366Z",
-      "updated_at": "2026-11-12T04:36:06.366Z",
+      "activated_at": "2026-11-12T05:33:49.963Z",
+      "updated_at": "2026-11-12T05:33:49.963Z",
       "session_id": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919",
       "hud": {
         "version": 1,
         "chips": [
           {
-            "label": "phase",
-            "value": "handoff",
+            "label": "blocked",
+            "value": "1",
+            "priority": 5,
+            "severity": "blocked"
+          },
+          {
+            "label": "goals",
+            "value": "0/2",
             "priority": 10
           },
           {
-            "label": "ambiguity",
-            "value": "28%/60%",
+            "label": "current",
+            "value": "blocked",
             "priority": 20
           },
           {
-            "label": "round",
-            "value": "17",
+            "label": "status",
+            "value": "blocked",
             "priority": 30
           },
           {
-            "label": "target",
-            "value": "mansion",
-            "priority": 40
-          },
-          {
-            "label": "weakest",
-            "value": "goal",
-            "priority": 50
-          },
-          {
-            "label": "spec",
-            "value": "persisted",
-            "priority": 60
+            "label": "ledger",
+            "value": "critic_verdict",
+            "priority": 35
           }
         ],
-        "updated_at": "2026-11-12T04:36:06.365Z"
+        "updated_at": "2026-11-12T05:33:49.962Z"
       },
-      "source_state_revision": 38,
-      "state_revision": 37
+      "receipt": {
+        "version": 1,
+        "skill": "ultragoal",
+        "owner": "gjc-runtime",
+        "command": "gjc ultragoal (reconcile)",
+        "state_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/state/skill-active-state.json",
+        "storage_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/state/ultragoal-state.json",
+        "mutated_at": "2026-11-12T05:33:49.955Z",
+        "fresh_until": "2026-11-12T06:03:49.955Z",
+        "status": "fresh",
+        "mutation_id": "ultragoal:reconcile:2026-11-12T05:33:49.955Z",
+        "verb": "reconcile",
+        "forced": true,
+        "from_phase": "blocked",
+        "to_phase": "blocked"
+      },
+      "source_state_revision": 20,
+      "state_revision": 19
     }
   ],
   "active_subskills": [],
-  "source_state_revision": 55,
-  "state_revision": 55
+  "source_state_revision": 90,
+  "state_revision": 90
 }

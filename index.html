@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Lantern Ghost</title>
+  <style>
+    html, body { margin: 0; }
+    canvas { display: block; width: 320px; height: 240px; image-rendering: pixelated; margin: 0 auto; }
+  </style>
+</head>
+<body>
+  <canvas id="screen" width="320" height="240"></canvas>
+  <script type="module">
+    import { LAYOUT_1 } from "./src/levels.js";
+    import { createState, moveGhost } from "./src/logic.js";
+    import { PALETTE, TILE_SIZE, tileColorIndex } from "./src/sprites.js";
+
+    const canvas = document.getElementById("screen");
+    const ctx = canvas.getContext("2d");
+    let state = createState(LAYOUT_1);
+
+    const KEY_TO_DIRECTION = {
+      ArrowUp: "up",
+      ArrowDown: "down",
+      ArrowLeft: "left",
+      ArrowRight: "right",
+    };
+
+    function draw() {
+      ctx.fillStyle = PALETTE[1];
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      state.grid.forEach((row, y) => {
+        for (let x = 0; x < row.length; x++) {
+          ctx.fillStyle = PALETTE[tileColorIndex(row[x])];
+          ctx.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        }
+      });
+      ctx.fillStyle = PALETTE[6];
+      ctx.fillRect(state.ghost.x * TILE_SIZE, state.ghost.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+    }
+
+    window.addEventListener("keydown", (event) => {
+      const direction = KEY_TO_DIRECTION[event.key];
+      if (!direction) return;
+      event.preventDefault();
+      if (event.repeat) return; // one press = one tile; held-key repeat ignored
+      state = moveGhost(state, direction);
+      draw();
+    });
+
+    document.body.style.background = PALETTE[1];
+    draw();
+  </script>
+</body>
+</html>

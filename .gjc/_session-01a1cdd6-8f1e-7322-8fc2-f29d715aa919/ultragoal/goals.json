@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "brief": "R1: GAME_DESIGN.md v0 기준 한 goal. 맵 위에서 캐릭터가 방향키 한 번에 한 칸씩 움직인다. 근거 계획: .gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/plans/ralplan/01a1cdd6-8f1e-7322-8fc2-f29d715aa919/pending-approval.md. 차단 게이트: GAME_DESIGN.md 4·5·6장과 (에이전트 제안) 값에 대한 사람의 명시적 승인 전에는 코드를 쓰지 않는다. 9장은 R2까지 대기. 기획서에 없는 기능 금지. 완료는 9장 확정 후 수용 기준 번호로 보고.",
+  "gjcGoalMode": "aggregate",
+  "gjcObjective": "Complete the durable ultragoal plan in .gjc/ultragoal/goals.json, including later accepted/appended stories, under the original brief constraints; use .gjc/ultragoal/ledger.jsonl as the audit trail.",
+  "goals": [
+    {
+      "id": "G001",
+      "title": "R1: GAME_DESIGN.md v0 기준 한 goal. 맵 위에서 캐릭터가 방향키 한 번에 한 칸씩 움직인다. 근거 계획: .gjc/_...",
+      "objective": "R1: GAME_DESIGN.md v0 기준 한 goal. 맵 위에서 캐릭터가 방향키 한 번에 한 칸씩 움직인다. 근거 계획: .gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/plans/ralplan/01a1cdd6-8f1e-7322-8fc2-f29d715aa919/pending-approval.md. 차단 게이트: GAME_DESIGN.md 4·5·6장과 (에이전트 제안) 값에 대한 사람의 명시적 승인 전에는 코드를 쓰지 않는다. 9장은 R2까지 대기. 기획서에 없는 기능 금지. 완료는 9장 확정 후 수용 기준 번호로 보고.",
+      "status": "superseded",
+      "createdAt": "2026-11-12T05:09:43.857Z",
+      "updatedAt": "2026-11-12T05:19:10.376Z",
+      "evidence": "Human approval of chapters 4-6 and values received; replacement story added.",
+      "steering": {
+        "kind": "mark_blocked_superseded",
+        "evidence": "Human approval of chapters 4-6 and values received; replacement story added.",
+        "rationale": "G001 blocked only on the approval that is now recorded; the replacement story carries the executable work.",
+        "noReplacementRequired": true
+      }
+    },
+    {
+      "id": "G002",
+      "title": "R1 implement movement",
+      "objective": "Implement R1 per the approved ralplan plan: src/logic.js (pure move function, no canvas), src/levels.js (layout 1 copied from GAME_DESIGN.md chapter 5), src/sprites.js (6-color palette 1,2,3,6 as hex only here), src/strings.js (UI text, may be empty of required strings), index.html (Canvas 2D, ES modules, arrow keys: one press = one tile, held-key repeat ignored, default scroll prevented), test/ (expected values taken from GAME_DESIGN.md). Do not draw candles (c) or guard (G): draw them as floor. Do not implement chapter 9 acceptance criteria; they wait for R2. Verify with node --test test/ and report acceptance-by-human checks in chapter 9 numbering only once it exists.",
+      "status": "blocked",
+      "createdAt": "2026-11-12T05:19:10.080Z",
+      "updatedAt": "2026-11-12T05:29:31.610Z",
+      "steering": {
+        "kind": "add_subgoal",
+        "evidence": "User approval of chapters 4-6 and values; GAME_DESIGN.md updated; plan pending-approval.md",
+        "rationale": "G001 is human-blocked and that block is now cleared; the executable work is this new story."
+      },
+      "startedAt": "2026-11-12T05:19:12.604Z",
+      "evidence": "Built and tested R1 (commits 299c654, df064dd). Strict completion gate still blocked: integration base unresolved, bun missing, e2e and red-team absent. User browser check passed."
+    }
+  ],
+  "createdAt": "2026-11-12T05:09:43.857Z",
+  "updatedAt": "2026-11-12T05:29:31.610Z",
+  "repositoryBinding": {
+    "schema": "gjc.repository_binding.v1",
+    "worktreeRoot": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost",
+    "commonDir": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.git",
+    "displayPath": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost",
+    "head": "dee3e88ae16f3a5042a68da57d14bcfe034a7af7",
+    "branch": "master"
+  },
+  "state_revision": 7
+}

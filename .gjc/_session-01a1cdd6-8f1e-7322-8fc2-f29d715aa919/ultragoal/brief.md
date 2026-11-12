@@ -1,0 +1,1 @@
+R1: GAME_DESIGN.md v0 기준 한 goal. 맵 위에서 캐릭터가 방향키 한 번에 한 칸씩 움직인다. 근거 계획: .gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/plans/ralplan/01a1cdd6-8f1e-7322-8fc2-f29d715aa919/pending-approval.md. 차단 게이트: GAME_DESIGN.md 4·5·6장과 (에이전트 제안) 값에 대한 사람의 명시적 승인 전에는 코드를 쓰지 않는다. 9장은 R2까지 대기. 기획서에 없는 기능 금지. 완료는 9장 확정 후 수용 기준 번호로 보고.

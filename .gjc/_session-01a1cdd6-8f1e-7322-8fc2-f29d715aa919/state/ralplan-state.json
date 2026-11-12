@@ -1,0 +1,63 @@
+{
+  "active": false,
+  "current_phase": "handoff",
+  "skill": "ralplan",
+  "version": 2,
+  "mode": "short",
+  "interactive": false,
+  "task": "R1 계획: GAME_DESIGN.md v0와 AGENTS.md 기준. goal은 하나, 맵 위에서 캐릭터가 한 칸씩 움직인다. 기획서에 없는 것은 계획에 넣지 않는다. 코드는 고치지 않는다.",
+  "run_id": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919",
+  "updated_at": "2026-11-12T05:09:38.140Z",
+  "repository_binding": {
+    "schema": "gjc.repository_binding.v1",
+    "worktreeRoot": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost",
+    "commonDir": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.git",
+    "displayPath": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost",
+    "head": "dee3e88ae16f3a5042a68da57d14bcfe034a7af7",
+    "branch": "master"
+  },
+  "session_id": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919",
+  "receipt": {
+    "version": 1,
+    "skill": "ralplan",
+    "owner": "gjc-state-cli",
+    "command": "gjc state ralplan handoff --to ultragoal",
+    "state_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/state/skill-active-state.json",
+    "storage_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/state/ralplan-state.json",
+    "mutated_at": "2026-11-12T05:09:38.140Z",
+    "fresh_until": "2026-11-12T05:39:38.140Z",
+    "status": "fresh",
+    "mutation_id": "ralplan:handoff:ultragoal:2026-11-12T05:09:38.140Z",
+    "forced": false,
+    "content_sha256": {
+      "algorithm": "sha256",
+      "value": "dc63807ccf8f4af7ec98c44fcfdf5c746e8038e05abbe439f62d6ae5a70f1e87",
+      "covered_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/state/ralplan-state.json",
+      "computed_at": "2026-11-12T05:09:38.146Z"
+    }
+  },
+  "last_review_verdict": "OKAY",
+  "last_review_verdict_lane": "critic",
+  "last_review_verdict_stage_n": 2,
+  "planner_subagent_id": "0-PlannerR1",
+  "planner_resumable": true,
+  "architect_id": "1-ArchitectPass1",
+  "architect_resumable": true,
+  "critic_id": "2-CriticPass1",
+  "critic_resumable": true,
+  "auto_handoff": {
+    "configuredTarget": "off",
+    "effectiveTarget": "off",
+    "degradationReason": null,
+    "source": "default"
+  },
+  "final_admission_phase_transition": {
+    "run_id": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919",
+    "final_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/plans/ralplan/01a1cdd6-8f1e-7322-8fc2-f29d715aa919/stage-02-final.md",
+    "final_sha256": "6d6ba46b6eb3d53db6ace9cbecc20aa9bfe2fe0858f9ea4405bd6112bbaec686",
+    "auto_handoff_sha256": "baf1bde06b9be0458d9d81bf55e067158d2cf07d30b198d609a3dec519b416b1"
+  },
+  "handoff_to": "ultragoal",
+  "handoff_at": "2026-11-12T05:09:38.140Z",
+  "state_revision": 2
+}
