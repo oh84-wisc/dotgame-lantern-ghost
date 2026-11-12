@@ -1,0 +1,1981 @@
+{
+  "active": true,
+  "version": 2,
+  "current_phase": "handoff",
+  "skill": "deep-interview",
+  "cwd": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost",
+  "updated_at": "2026-11-12T04:36:06.351Z",
+  "session_id": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919",
+  "threshold": 0.05,
+  "threshold_source": "default",
+  "receipt": {
+    "version": 1,
+    "skill": "deep-interview",
+    "owner": "gjc-runtime",
+    "command": "gjc deep-interview persist-spec-state",
+    "state_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/state/skill-active-state.json",
+    "storage_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/state/deep-interview-state.json",
+    "mutated_at": "2026-11-12T04:36:06.351Z",
+    "fresh_until": "2026-11-12T05:06:06.351Z",
+    "status": "fresh",
+    "mutation_id": "deep-interview:2026-11-12T04:36:06.351Z",
+    "content_sha256": {
+      "algorithm": "sha256",
+      "value": "23eca50f2f0b8729ec1e0c2b00f5226923d11b27342219cf8e9e2322681d4cef",
+      "covered_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/state/deep-interview-state.json",
+      "computed_at": "2026-11-12T04:36:06.359Z"
+    }
+  },
+  "last_applied_draft_id": "cfb7f3aa-11c7-4b1a-878b-bde7cc174b81",
+  "state": {
+    "threshold": 0.6,
+    "threshold_source": "--quick mode default (no config.yml override)",
+    "rounds": [
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:0::q:topology-confirmation",
+        "round": 0,
+        "question_id": "topology-confirmation",
+        "question_text": "Round 0 | Topology confirmation | Ambiguity: not scored yet\n\nI'm reading this as 3 top-level components:\n1. Ghost: the character who relights the candles (its movement and what counts as relighting).\n2. Mansion: the rooms, candle placement, and layout the ghost moves through.\n3. Guard: the patrolling guard with a flashlight, and how being caught ends the run.\n\nLocked intent:\n- Artifacts: artifact:game-design-doc (a GAME_DESIGN.md spec, per AGENTS.md, which doesn't exist yet); artifact:single-html-game (one index.html that runs in a browser)\n- Surfaces: surface:canvas-screen (one screen, Canvas 2D, no mobile/responsive layout)\n- Integrations: integration:none (no server, DB, or external assets; AGENTS.md forbids them)\n- Constraints: constraint:no-deps (HTML + Canvas 2D + plain JS ES modules, no build, no framework, per AGENTS.md)\n\nIs that topology and locked intent right? Should any component or intent be added, removed, merged, split, or explicitly deferred?",
+        "question_hash": "3249cf4721b8e054f4ca304dfa5d4b0b",
+        "answer_hash": "0f5eeb91115a109c71e8aab455fac4d1eb34cafc77248ebfd0adc05d7e3cb131",
+        "selected_options": [
+          "Looks right"
+        ],
+        "component": "review-topology",
+        "dimension": "topology",
+        "ambiguity_at_ask": 1,
+        "lifecycle": "answered",
+        "answered_at": "2026-11-12T04:28:53.018Z"
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:1::q:ghost-control-and-win",
+        "round": 1,
+        "question_id": "ghost-control-and-win",
+        "question_text": "Round 1 | Component: Ghost | Targeting: goal | Why now: no component has any scored clarity yet, and the core loop (who controls the ghost and how a run is won) determines every other answer | Ambiguity: 100%\n\nWho drives the ghost, and what counts as winning a run?",
+        "question_hash": "41f9166e29e89de7c31abb943113637d",
+        "answer_hash": "f98448efd603e0e2005b4f8213c4818949e74bfdeae01fe2c718a1a08b7a1c4f",
+        "selected_options": [
+          "Player controls the ghost; win = all candles lit before the guard catches it"
+        ],
+        "component": "ghost",
+        "dimension": "goal",
+        "ambiguity_at_ask": 1,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:29:16.209Z",
+        "ambiguity": 0.83,
+        "scores": {
+          "goal": 0.2,
+          "constraints": 0.1,
+          "criteria": 0.2
+        },
+        "weakest_component_id": "mansion",
+        "weakest_dimension": "constraints",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.2,
+            "criteria": 0.4,
+            "gaps": {
+              "constraints": "Movement speed, relight range, and interaction rules undefined",
+              "criteria": "No measurable win time or candle count"
+            }
+          },
+          "mansion": {
+            "goal": 0.2,
+            "constraints": 0.1,
+            "criteria": 0.2,
+            "gaps": {
+              "goal": "Room count, candle count, and layout undefined",
+              "constraints": "No size or grid limits",
+              "criteria": "No completion measure"
+            }
+          },
+          "guard": {
+            "goal": 0.5,
+            "constraints": 0.2,
+            "criteria": 0.3,
+            "gaps": {
+              "constraints": "Patrol pattern, detection range, and flashlight behavior undefined",
+              "criteria": "Catch = loss stated; no alert/escape rule"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": null,
+          "affected_dimension": null,
+          "prior_dimension_score": null,
+          "new_dimension_score": null,
+          "prior_ambiguity": 1,
+          "new_ambiguity": 0.83,
+          "evidence": "Round 1 answer defines control (player) and win/lose (all candles lit vs. caught)."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count"
+              ],
+              "relationships": [
+                "Ghost relights Candle"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Mansion contains Candle"
+              ]
+            },
+            {
+              "name": "Mansion",
+              "type": "supporting",
+              "fields": [
+                "rooms",
+                "candles"
+              ],
+              "relationships": [
+                "Mansion contains Candle"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "position"
+              ],
+              "relationships": [
+                "Guard catches Ghost"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": "N/A"
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:2::q:mansion-scale",
+        "round": 2,
+        "question_id": "mansion-scale",
+        "question_text": "Round 2 | Component: Mansion | Targeting: constraints | Why now: the candle count and room count decide the difficulty, the guard's patrol design, and whether the win is reachable at all | Ambiguity: 83%\n\nHow big is one run's mansion?",
+        "question_hash": "832ecae63be290028fe7cbe25b804170",
+        "answer_hash": "be57c98d8d0fb4ad1bafb6357a927e59909d109cb61b8041db854098f4e9d0aa",
+        "selected_options": [
+          "Single screen, one room, about 10 to 20 candles"
+        ],
+        "component": "mansion",
+        "dimension": "constraints",
+        "ambiguity_at_ask": 0.83,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:29:50.114Z",
+        "ambiguity": 0.74,
+        "scores": {
+          "goal": 0.35,
+          "constraints": 0.2,
+          "criteria": 0.2
+        },
+        "weakest_component_id": "ghost",
+        "weakest_dimension": "constraints",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.2,
+            "criteria": 0.4,
+            "gaps": {
+              "constraints": "Movement speed, relight range, and interaction rules undefined"
+            }
+          },
+          "mansion": {
+            "goal": 0.35,
+            "constraints": 0.6,
+            "criteria": 0.2,
+            "gaps": {
+              "goal": "Room layout, candle positions, and guard-visible areas undefined",
+              "criteria": "No completion measure beyond all candles lit"
+            }
+          },
+          "guard": {
+            "goal": 0.5,
+            "constraints": 0.2,
+            "criteria": 0.3,
+            "gaps": {
+              "constraints": "Patrol pattern, detection range undefined"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "mansion",
+          "affected_dimension": "constraints",
+          "prior_dimension_score": 0.1,
+          "new_dimension_score": 0.6,
+          "prior_ambiguity": 0.83,
+          "new_ambiguity": 0.74,
+          "evidence": "Mansion is one screen, one room, 10-20 candles."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count"
+              ],
+              "relationships": [
+                "Ghost relights Candle"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Room contains Candle"
+              ]
+            },
+            {
+              "name": "Room",
+              "type": "supporting",
+              "fields": [
+                "candles"
+              ],
+              "relationships": [
+                "Mansion is one Room"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "position"
+              ],
+              "relationships": [
+                "Guard catches Ghost"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 0.75,
+          "matching_reasoning": "Mansion renamed to Room in scope (single room); Candle, Guard, Ghost stable."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:3::q:guard-patrol",
+        "round": 3,
+        "question_id": "guard-patrol",
+        "question_text": "Round 3 | Component: Guard | Targeting: constraints | Why now: the guard's patrol and detection behavior is the only loss condition, so without it the win cannot be balanced or tested | Ambiguity: 74%\n\nHow does the guard move and catch the ghost?",
+        "question_hash": "b3065e77e7188245c3cf367b7b5aff88",
+        "answer_hash": "4efa35f0a2f1b08d73e0ce476bfc4b266ec400481c4ecc58751ff242a978d3f0",
+        "selected_options": [
+          "Fixed patrol route; catches ghost if ghost is inside the flashlight cone"
+        ],
+        "component": "guard",
+        "dimension": "constraints",
+        "ambiguity_at_ask": 0.74,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:30:10.472Z",
+        "ambiguity": 0.74,
+        "scores": {
+          "goal": 0.35,
+          "constraints": 0.2,
+          "criteria": 0.2
+        },
+        "weakest_component_id": "ghost",
+        "weakest_dimension": "constraints",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.2,
+            "criteria": 0.4,
+            "gaps": {
+              "constraints": "Relight range, interaction speed, and movement rules undefined"
+            }
+          },
+          "mansion": {
+            "goal": 0.35,
+            "constraints": 0.6,
+            "criteria": 0.2,
+            "gaps": {
+              "criteria": "No completion measure beyond all candles lit"
+            }
+          },
+          "guard": {
+            "goal": 0.55,
+            "constraints": 0.6,
+            "criteria": 0.3,
+            "gaps": {
+              "constraints": "Route length, flashlight cone size, and sweep timing undefined",
+              "criteria": "No alert or escape rule"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "guard",
+          "affected_dimension": "constraints",
+          "prior_dimension_score": 0.2,
+          "new_dimension_score": 0.6,
+          "prior_ambiguity": 0.74,
+          "new_ambiguity": 0.74,
+          "evidence": "Guard uses a fixed patrol route and catches the ghost only inside the flashlight cone. Guard constraints improved but the overall minimum is still held by Ghost constraints (0.2), so ambiguity is flat."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count"
+              ],
+              "relationships": [
+                "Ghost relights Candle"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Room contains Candle"
+              ]
+            },
+            {
+              "name": "Room",
+              "type": "supporting",
+              "fields": [
+                "candles"
+              ],
+              "relationships": [
+                "Room contains Candle"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 1,
+          "matching_reasoning": "Ghost, Candle, Room, Guard all matched by name."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:4::q:ghost-relight-rules",
+        "round": 4,
+        "question_id": "ghost-relight-rules",
+        "question_text": "Round 4 | Component: Ghost | Targeting: constraints | Why now: Ghost constraints is the sole minimum holding ambiguity at 74%, and relight rules decide how the player spends time | Ambiguity: 74%\n\nHow does the ghost relight a candle?",
+        "question_hash": "d32490bddb4d5c1ea3618ea42f25657a",
+        "answer_hash": "33ce828b7e168db074dc211e0e2fe8a82709907c303f86f44d99cb1b529b9b8e",
+        "selected_options": [
+          "Walk onto the candle; instant relight, no limit"
+        ],
+        "component": "ghost",
+        "dimension": "constraints",
+        "ambiguity_at_ask": 0.74,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:30:30.589Z",
+        "ambiguity": 0.62,
+        "scores": {
+          "goal": 0.35,
+          "constraints": 0.6,
+          "criteria": 0.2
+        },
+        "weakest_component_id": "mansion",
+        "weakest_dimension": "criteria",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.6,
+            "criteria": 0.4,
+            "gaps": {
+              "constraints": "Ghost movement speed and run-length rules undefined",
+              "criteria": "Win timing not stated"
+            }
+          },
+          "mansion": {
+            "goal": 0.35,
+            "constraints": 0.6,
+            "criteria": 0.2,
+            "gaps": {
+              "criteria": "No completion measure beyond all candles lit"
+            }
+          },
+          "guard": {
+            "goal": 0.55,
+            "constraints": 0.6,
+            "criteria": 0.3,
+            "gaps": {
+              "criteria": "No alert or escape rule"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "ghost",
+          "affected_dimension": "constraints",
+          "prior_dimension_score": 0.2,
+          "new_dimension_score": 0.6,
+          "prior_ambiguity": 0.74,
+          "new_ambiguity": 0.65,
+          "evidence": "Relight is instant on walk-over, unlimited."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count"
+              ],
+              "relationships": [
+                "Ghost relights Candle by walking onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Room contains Candle"
+              ]
+            },
+            {
+              "name": "Room",
+              "type": "supporting",
+              "fields": [
+                "candles"
+              ],
+              "relationships": [
+                "Room contains Candle"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 1,
+          "matching_reasoning": "Ghost, Candle, Room, Guard all matched by name."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:5::q:mansion-completion",
+        "round": 5,
+        "question_id": "mansion-completion",
+        "question_text": "Round 5 | Component: Mansion | Targeting: criteria | Why now: the completion measure defines what success looks like, and it is the lowest score in the topology | Ambiguity: 65%\n\nWhat ends a run as a win?",
+        "question_hash": "702eea0e3b9d2ad3d6d6b5638a49adfa",
+        "answer_hash": "83248b787999c8a3ad7fd89d5f3ea89d96cf654c909d3c2117bd90fe3af1d08c",
+        "selected_options": [
+          "All candles lit within a fixed time limit"
+        ],
+        "component": "mansion",
+        "dimension": "criteria",
+        "ambiguity_at_ask": 0.65,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:31:00.259Z",
+        "ambiguity": 0.57,
+        "scores": {
+          "goal": 0.4,
+          "constraints": 0.6,
+          "criteria": 0.3
+        },
+        "weakest_component_id": "guard",
+        "weakest_dimension": "criteria",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.6,
+            "criteria": 0.55,
+            "gaps": {
+              "criteria": "Time limit value undefined"
+            }
+          },
+          "mansion": {
+            "goal": 0.4,
+            "constraints": 0.6,
+            "criteria": 0.6,
+            "gaps": {
+              "goal": "Layout and candle positions undefined",
+              "criteria": "Time limit value undefined"
+            }
+          },
+          "guard": {
+            "goal": 0.55,
+            "constraints": 0.6,
+            "criteria": 0.3,
+            "gaps": {
+              "criteria": "Catch outcome (reset, loss, retry) undefined; no alert or escape rule"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "mansion",
+          "affected_dimension": "criteria",
+          "prior_dimension_score": 0.2,
+          "new_dimension_score": 0.6,
+          "prior_ambiguity": 0.65,
+          "new_ambiguity": 0.57,
+          "evidence": "Win = all candles lit within a fixed time limit (value unset)."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count"
+              ],
+              "relationships": [
+                "Ghost relights Candle by walking onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Room contains Candle"
+              ]
+            },
+            {
+              "name": "Room",
+              "type": "supporting",
+              "fields": [
+                "candles",
+                "time limit"
+              ],
+              "relationships": [
+                "Room contains Candle"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 1,
+          "matching_reasoning": "Ghost, Candle, Room, Guard all matched by name; time limit is a new field on Room."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:6::q:guard-catch-outcome",
+        "round": 6,
+        "question_id": "guard-catch-outcome",
+        "question_text": "Round 6 | Component: Guard | Targeting: criteria | Why now: the catch outcome is the only failure state, and without it the win condition and the closure check cannot be tested | Ambiguity: 57%\n\nWhat happens when the guard catches the ghost?",
+        "question_hash": "7a0c27a510e3999991296585b2c27e6b",
+        "answer_hash": "fe528c8d4890f952e2abe44742b3664beb7c62429aa39660bbce3a3e5a5b1a86",
+        "selected_options": [
+          "Run ends immediately as a loss; lit candles are kept for the score"
+        ],
+        "component": "guard",
+        "dimension": "criteria",
+        "ambiguity_at_ask": 0.57,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:31:26.343Z",
+        "ambiguity": 0.495,
+        "scores": {
+          "goal": 0.4,
+          "constraints": 0.6,
+          "criteria": 0.55
+        },
+        "weakest_component_id": "mansion",
+        "weakest_dimension": "goal",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.6,
+            "criteria": 0.55,
+            "gaps": {
+              "criteria": "Time limit value and candle score formula undefined"
+            }
+          },
+          "mansion": {
+            "goal": 0.4,
+            "constraints": 0.6,
+            "criteria": 0.6,
+            "gaps": {
+              "goal": "Candle positions and room layout undefined",
+              "criteria": "Time limit value undefined"
+            }
+          },
+          "guard": {
+            "goal": 0.6,
+            "constraints": 0.6,
+            "criteria": 0.6,
+            "gaps": {
+              "criteria": "Lit-candle score formula undefined"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "guard",
+          "affected_dimension": "criteria",
+          "prior_dimension_score": 0.3,
+          "new_dimension_score": 0.6,
+          "prior_ambiguity": 0.57,
+          "new_ambiguity": 0.495,
+          "evidence": "Catch = immediate loss; lit candles kept for score."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count"
+              ],
+              "relationships": [
+                "Ghost relights Candle by walking onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Room contains Candle"
+              ]
+            },
+            {
+              "name": "Room",
+              "type": "supporting",
+              "fields": [
+                "candles",
+                "time limit"
+              ],
+              "relationships": [
+                "Room contains Candle"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone; catch ends run as loss"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 1,
+          "matching_reasoning": "All four entities matched by name."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:7::q:mansion-layout-source",
+        "round": 7,
+        "question_id": "mansion-layout-source",
+        "question_text": "Round 7 | Component: Mansion | Targeting: goal | Why now: the candle positions and layout set the route length, which the time limit and the guard's patrol both depend on | Ambiguity: 49.5%\n\nHow is the single room's layout (wall and candle positions) decided?",
+        "question_hash": "7d33325e00c0b89c8aa59819857eb68c",
+        "answer_hash": "f187f048d630e922de460ec0a7204fb3f1729eda7777b08695ddc0a5305abab2",
+        "selected_options": [
+          "Several fixed hand-authored layouts, chosen in order"
+        ],
+        "component": "mansion",
+        "dimension": "goal",
+        "ambiguity_at_ask": 0.495,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:31:50.342Z",
+        "ambiguity": 0.435,
+        "scores": {
+          "goal": 0.55,
+          "constraints": 0.6,
+          "criteria": 0.55
+        },
+        "weakest_component_id": "ghost",
+        "weakest_dimension": "criteria",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.6,
+            "criteria": 0.55,
+            "gaps": {
+              "criteria": "Time limit value and candle score formula undefined"
+            }
+          },
+          "mansion": {
+            "goal": 0.55,
+            "constraints": 0.6,
+            "criteria": 0.6,
+            "gaps": {
+              "goal": "Number of layouts and candle/wall positions undefined",
+              "criteria": "Time limit value undefined"
+            }
+          },
+          "guard": {
+            "goal": 0.6,
+            "constraints": 0.6,
+            "criteria": 0.6,
+            "gaps": {
+              "criteria": "Lit-candle score formula undefined"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "mansion",
+          "affected_dimension": "goal",
+          "prior_dimension_score": 0.4,
+          "new_dimension_score": 0.55,
+          "prior_ambiguity": 0.495,
+          "new_ambiguity": 0.435,
+          "evidence": "Several fixed hand-authored layouts, chosen in order. No procedural generation."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count"
+              ],
+              "relationships": [
+                "Ghost relights Candle by walking onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Layout places Candle"
+              ]
+            },
+            {
+              "name": "Layout",
+              "type": "supporting",
+              "fields": [
+                "walls",
+                "candle positions",
+                "order"
+              ],
+              "relationships": [
+                "Room has ordered Layouts"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone; catch ends run as loss"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 0.8,
+          "matching_reasoning": "Room renamed to Layout-bearing Room (kept as container); Candle, Guard, Ghost matched by name; Layout is new."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:8::q:time-limit-value",
+        "round": 8,
+        "question_id": "time-limit-value",
+        "question_text": "Round 8 | Component: Ghost | Targeting: criteria | Why now: the time limit value is the single open number behind the win condition, and it is the minimum criteria score | Ambiguity: 43.5%\n\nHow long is the time limit for lighting all candles in one layout?",
+        "question_hash": "87691307bd08f5ebe9a240d733a2aa08",
+        "answer_hash": "1b954ccb0fad9ae38bc62dc7bb91559244fd7cb987e8b12d93e118db5ab76760",
+        "selected_options": [
+          "60 seconds"
+        ],
+        "component": "ghost",
+        "dimension": "criteria",
+        "ambiguity_at_ask": 0.435,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:32:21.014Z",
+        "ambiguity": 0.42,
+        "scores": {
+          "goal": 0.55,
+          "constraints": 0.6,
+          "criteria": 0.6
+        },
+        "weakest_component_id": "mansion",
+        "weakest_dimension": "goal",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.6,
+            "criteria": 0.7,
+            "gaps": {
+              "constraints": "Movement speed undefined",
+              "criteria": "Lit-candle score formula undefined"
+            }
+          },
+          "mansion": {
+            "goal": 0.55,
+            "constraints": 0.6,
+            "criteria": 0.75,
+            "gaps": {
+              "goal": "Candle and wall positions per layout undefined; number of layouts undefined"
+            }
+          },
+          "guard": {
+            "goal": 0.6,
+            "constraints": 0.6,
+            "criteria": 0.6,
+            "gaps": {
+              "constraints": "Route length and cone size undefined",
+              "criteria": "Lit-candle score formula undefined"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "ghost",
+          "affected_dimension": "criteria",
+          "prior_dimension_score": 0.55,
+          "new_dimension_score": 0.7,
+          "prior_ambiguity": 0.435,
+          "new_ambiguity": 0.42,
+          "evidence": "Time limit is 60 seconds."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count"
+              ],
+              "relationships": [
+                "Ghost relights Candle by walking onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Layout places Candle"
+              ]
+            },
+            {
+              "name": "Layout",
+              "type": "supporting",
+              "fields": [
+                "walls",
+                "candle positions",
+                "order"
+              ],
+              "relationships": [
+                "Room has ordered Layouts"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone; catch ends run as loss"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 1,
+          "matching_reasoning": "All four entities matched by name; no new entities."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:9::q:score-meaning",
+        "round": 9,
+        "question_id": "score-meaning",
+        "question_text": "Round 9 | Component: Guard | Targeting: criteria | Why now: a loss currently has no measurable outcome because the score formula is undefined, and that gap blocks any closure check on the failure path | Ambiguity: 42%\n\nWhen the guard catches the ghost, what is the lit-candle score for?",
+        "question_hash": "efc770333094003d16d9988bc24b58cd",
+        "answer_hash": "8679d383095b0532bc3ae321cc15de1205498c2727ed283291bead4954526d30",
+        "selected_options": [
+          "Score = number of candles lit at the moment of the catch"
+        ],
+        "component": "guard",
+        "dimension": "criteria",
+        "ambiguity_at_ask": 0.42,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:32:44.053Z",
+        "ambiguity": 0.375,
+        "scores": {
+          "goal": 0.55,
+          "constraints": 0.6,
+          "criteria": 0.75
+        },
+        "weakest_component_id": "mansion",
+        "weakest_dimension": "goal",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.6,
+            "criteria": 0.8,
+            "gaps": {
+              "constraints": "Movement speed and movement mode undefined"
+            }
+          },
+          "mansion": {
+            "goal": 0.55,
+            "constraints": 0.6,
+            "criteria": 0.75,
+            "gaps": {
+              "goal": "Layout content and candle positions undefined",
+              "constraints": "Layout count undefined"
+            }
+          },
+          "guard": {
+            "goal": 0.6,
+            "constraints": 0.6,
+            "criteria": 0.85,
+            "gaps": {
+              "constraints": "Route length and cone size undefined"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "guard",
+          "affected_dimension": "criteria",
+          "prior_dimension_score": 0.6,
+          "new_dimension_score": 0.85,
+          "prior_ambiguity": 0.42,
+          "new_ambiguity": 0.375,
+          "evidence": "Score = number of candles lit at the moment of the catch."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count"
+              ],
+              "relationships": [
+                "Ghost relights Candle by walking onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Layout places Candle"
+              ]
+            },
+            {
+              "name": "Layout",
+              "type": "supporting",
+              "fields": [
+                "walls",
+                "candle positions",
+                "order"
+              ],
+              "relationships": [
+                "Room has ordered Layouts"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone; catch ends run as loss with score = lit candles"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 1,
+          "matching_reasoning": "All entities matched by name; no new entities."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:10::q:layout-source-doc",
+        "round": 10,
+        "question_id": "layout-source-doc",
+        "question_text": "Round 10 | Component: Mansion | Targeting: goal | Why now: the layout content is the only missing input for the mansion, and AGENTS.md names a GAME_DESIGN.md that is absent from this repo | Ambiguity: 37.5%\n\nWhere do the room layouts come from? AGENTS.md says the map is copied from GAME_DESIGN.md section 5, but no GAME_DESIGN.md exists in this repo.",
+        "question_hash": "7754c16f883dad8ab3f5b070289fdfed",
+        "answer_hash": "ee5c8903ed6c8c26af5b5ec78da2a4786274137dc6a89861fe4d897075a3a941",
+        "selected_options": [
+          "Defer layouts; spec only fixes the layout count and rules"
+        ],
+        "component": "mansion",
+        "dimension": "goal",
+        "ambiguity_at_ask": 0.375,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:33:01.091Z",
+        "ambiguity": 0.355,
+        "scores": {
+          "goal": 0.6,
+          "constraints": 0.6,
+          "criteria": 0.75
+        },
+        "weakest_component_id": "ghost",
+        "weakest_dimension": "constraints",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.6,
+            "criteria": 0.8,
+            "gaps": {
+              "constraints": "Movement speed and movement mode undefined"
+            }
+          },
+          "mansion": {
+            "goal": 0.6,
+            "constraints": 0.6,
+            "criteria": 0.75,
+            "gaps": {
+              "goal": "Layout content deferred by user; layout count undefined",
+              "constraints": "Layout count undefined"
+            }
+          },
+          "guard": {
+            "goal": 0.6,
+            "constraints": 0.6,
+            "criteria": 0.85,
+            "gaps": {
+              "constraints": "Route length and cone size undefined"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "mansion",
+          "affected_dimension": "goal",
+          "prior_dimension_score": 0.55,
+          "new_dimension_score": 0.6,
+          "prior_ambiguity": 0.375,
+          "new_ambiguity": 0.3925,
+          "evidence": "User deferred layout content; spec fixes layout count and rules only. Deferral is a scoring deferral, not a topology deferral. Ambiguity rose slightly because layout count remains open."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count"
+              ],
+              "relationships": [
+                "Ghost relights Candle by walking onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Layout places Candle"
+              ]
+            },
+            {
+              "name": "Layout",
+              "type": "supporting",
+              "fields": [
+                "walls",
+                "candle positions",
+                "order",
+                "content deferred"
+              ],
+              "relationships": [
+                "Room has ordered Layouts"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone; catch ends run as loss with score = lit candles"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 1,
+          "matching_reasoning": "All entities matched by name; Layout content deferred, no entity change."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:11::q:ghost-movement",
+        "round": 11,
+        "question_id": "ghost-movement",
+        "question_text": "Round 11 | Component: Ghost | Targeting: constraints | Why now: movement speed decides whether 60 seconds can light 10 to 20 candles, so it is the constraint that the win condition depends on | Ambiguity: 39%\n\nHow does the ghost move?",
+        "question_hash": "d8e32c48b68bf0493846c076fa04f9b4",
+        "answer_hash": "88c61412846672d7341dce089a20da32fed5b98811d6064b486b45d5307b0061",
+        "selected_options": [
+          "Grid step per key press (turn-based, no real-time speed)"
+        ],
+        "component": "ghost",
+        "dimension": "constraints",
+        "ambiguity_at_ask": 0.3925,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:33:33.322Z",
+        "ambiguity": 0.355,
+        "scores": {
+          "goal": 0.6,
+          "constraints": 0.6,
+          "criteria": 0.75
+        },
+        "weakest_component_id": "mansion",
+        "weakest_dimension": "constraints",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.8,
+            "criteria": 0.8,
+            "gaps": {
+              "goal": "Ghost route and key bindings not yet specified"
+            }
+          },
+          "mansion": {
+            "goal": 0.6,
+            "constraints": 0.6,
+            "criteria": 0.75,
+            "gaps": {
+              "constraints": "Layout count undefined"
+            }
+          },
+          "guard": {
+            "goal": 0.6,
+            "constraints": 0.6,
+            "criteria": 0.85,
+            "gaps": {
+              "constraints": "Route length and cone size undefined"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [
+            {
+              "id": "D",
+              "label": "scope/semantics tension"
+            }
+          ],
+          "trigger_status": "unresolved",
+          "affected_component": "ghost",
+          "affected_dimension": "constraints",
+          "prior_dimension_score": 0.8,
+          "new_dimension_score": 0.8,
+          "prior_ambiguity": 0.3925,
+          "new_ambiguity": 0.3925,
+          "evidence": "Movement is turn-based (grid step per key press), but the win condition is a 60-second limit. Unclear whether the clock is real-time or advances per step. Movement itself is now clear."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count",
+                "grid step"
+              ],
+              "relationships": [
+                "Ghost relights Candle by stepping onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Layout places Candle"
+              ]
+            },
+            {
+              "name": "Layout",
+              "type": "supporting",
+              "fields": [
+                "walls",
+                "candle positions",
+                "order",
+                "content deferred"
+              ],
+              "relationships": [
+                "Room has ordered Layouts"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone; catch ends run as loss with score = lit candles"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 1,
+          "matching_reasoning": "All entities matched by name."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:12::q:clock-semantics",
+        "round": 12,
+        "question_id": "clock-semantics",
+        "question_text": "Round 12 | Component: Ghost | Targeting: constraints | Why now: the 60-second clock contradicts turn-based movement, and until one meaning is chosen the win condition cannot be tested | Ambiguity: 39%\n\nMovement is turn-based (one grid step per key press), but the win is \"all candles lit within 60 seconds.\" How does the clock run?",
+        "question_hash": "1208f57e479ad479bfafa8c6eb5ed287",
+        "answer_hash": "c5c07c05ab6e102cef6b803959b24b9c3607c02cb9b06dacda8a168c44dcf747",
+        "selected_options": [
+          "Real-time countdown; the player can take as long as they want, but the 60 seconds keep running"
+        ],
+        "component": "ghost",
+        "dimension": "constraints",
+        "ambiguity_at_ask": 0.3925,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:34:01.719Z",
+        "ambiguity": 0.355,
+        "scores": {
+          "goal": 0.6,
+          "constraints": 0.6,
+          "criteria": 0.75
+        },
+        "weakest_component_id": "mansion",
+        "weakest_dimension": "constraints",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.85,
+            "criteria": 0.8,
+            "gaps": {
+              "goal": "Key bindings and start position not yet specified"
+            }
+          },
+          "mansion": {
+            "goal": 0.6,
+            "constraints": 0.6,
+            "criteria": 0.75,
+            "gaps": {
+              "constraints": "Layout count undefined"
+            }
+          },
+          "guard": {
+            "goal": 0.6,
+            "constraints": 0.6,
+            "criteria": 0.85,
+            "gaps": {
+              "constraints": "Route length and cone size undefined"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [
+            {
+              "id": "D",
+              "label": "scope/semantics tension"
+            }
+          ],
+          "trigger_status": "resolved",
+          "affected_component": "ghost",
+          "affected_dimension": "constraints",
+          "prior_dimension_score": 0.8,
+          "new_dimension_score": 0.85,
+          "prior_ambiguity": 0.3925,
+          "new_ambiguity": 0.3925,
+          "evidence": "Real-time 60-second countdown with turn-based grid steps; ghost may take any amount of time to step but the clock keeps running. Trigger resolved; minimum dimension still held by Mansion and Guard constraints (0.6), so ambiguity is flat."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count",
+                "grid step"
+              ],
+              "relationships": [
+                "Ghost relights Candle by stepping onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Layout places Candle"
+              ]
+            },
+            {
+              "name": "Clock",
+              "type": "supporting",
+              "fields": [
+                "60-second real-time countdown"
+              ],
+              "relationships": [
+                "Clock ends run as loss if candles not all lit"
+              ]
+            },
+            {
+              "name": "Layout",
+              "type": "supporting",
+              "fields": [
+                "walls",
+                "candle positions",
+                "order",
+                "content deferred"
+              ],
+              "relationships": [
+                "Room has ordered Layouts"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone; catch ends run as loss with score = lit candles"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 0.8,
+          "matching_reasoning": "Clock added as new entity; others matched by name."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:13::q:guard-cone-route",
+        "round": 13,
+        "question_id": "guard-cone-route",
+        "question_text": "Round 13 | Component: Guard | Targeting: constraints | Why now: the flashlight cone and patrol route are the only loss mechanic, and they still hold the minimum constraint score at 0.60 | Ambiguity: 39%\n\nHow large is the guard's flashlight cone and how long is the patrol route?",
+        "question_hash": "6d4c07416c2f24b3f0f0a850be52ca5a",
+        "answer_hash": "71e43a8cee01d74653b33fed2bae4e8b305b1c924533013d526d97d7cdd7b61a",
+        "selected_options": [
+          "Cone covers 1 tile straight ahead; route loops 8 to 12 steps"
+        ],
+        "component": "guard",
+        "dimension": "constraints",
+        "ambiguity_at_ask": 0.3925,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:34:24.380Z",
+        "ambiguity": 0.355,
+        "scores": {
+          "goal": 0.6,
+          "constraints": 0.6,
+          "criteria": 0.75
+        },
+        "weakest_component_id": "mansion",
+        "weakest_dimension": "constraints",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.85,
+            "criteria": 0.8,
+            "gaps": {
+              "goal": "Key bindings and start position not yet specified"
+            }
+          },
+          "mansion": {
+            "goal": 0.6,
+            "constraints": 0.6,
+            "criteria": 0.75,
+            "gaps": {
+              "constraints": "Layout count undefined"
+            }
+          },
+          "guard": {
+            "goal": 0.6,
+            "constraints": 0.85,
+            "criteria": 0.85,
+            "gaps": {
+              "goal": "Guard start position and patrol start tile undefined"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "guard",
+          "affected_dimension": "constraints",
+          "prior_dimension_score": 0.6,
+          "new_dimension_score": 0.85,
+          "prior_ambiguity": 0.3925,
+          "new_ambiguity": 0.3925,
+          "evidence": "Cone is 1 tile straight ahead; route loops 8-12 steps. Minimum still held by Mansion constraints (layout count)."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count",
+                "grid step"
+              ],
+              "relationships": [
+                "Ghost relights Candle by stepping onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Layout places Candle"
+              ]
+            },
+            {
+              "name": "Clock",
+              "type": "supporting",
+              "fields": [
+                "60-second real-time countdown"
+              ],
+              "relationships": [
+                "Clock ends run as loss if candles not all lit"
+              ]
+            },
+            {
+              "name": "Layout",
+              "type": "supporting",
+              "fields": [
+                "walls",
+                "candle positions",
+                "order",
+                "content deferred"
+              ],
+              "relationships": [
+                "Room has ordered Layouts"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone 1 tile",
+                "route 8-12 steps"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone; catch ends run as loss with score = lit candles"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 1,
+          "matching_reasoning": "All entities matched by name."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:14::q:layout-count",
+        "round": 14,
+        "question_id": "layout-count",
+        "question_text": "Round 14 | Component: Mansion | Targeting: constraints | Why now: the layout count is the last open number on the mansion and the only thing still holding the minimum constraint at 0.60 | Ambiguity: 39%\n\nHow many layouts does one game contain (played in order)?",
+        "question_hash": "b7be2302018ce7169f8c4bcab95d07b7",
+        "answer_hash": "22498108fbcbf3b74e10ba66eeeecef393a759c5a9ff81f253abce8c4aa24b5d",
+        "selected_options": [
+          "3 layouts"
+        ],
+        "component": "mansion",
+        "dimension": "constraints",
+        "ambiguity_at_ask": 0.3925,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:34:45.559Z",
+        "ambiguity": 0.28,
+        "scores": {
+          "goal": 0.6,
+          "constraints": 0.85,
+          "criteria": 0.75
+        },
+        "weakest_component_id": "mansion",
+        "weakest_dimension": "goal",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.85,
+            "criteria": 0.8,
+            "gaps": {
+              "goal": "Ghost start tile and key bindings not yet specified"
+            }
+          },
+          "mansion": {
+            "goal": 0.6,
+            "constraints": 0.85,
+            "criteria": 0.75,
+            "gaps": {
+              "goal": "Layout content deferred by user (explicit scope deferral)"
+            }
+          },
+          "guard": {
+            "goal": 0.6,
+            "constraints": 0.85,
+            "criteria": 0.85,
+            "gaps": {
+              "goal": "Guard start tile and patrol start point undefined"
+            }
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "mansion",
+          "affected_dimension": "constraints",
+          "prior_dimension_score": 0.6,
+          "new_dimension_score": 0.85,
+          "prior_ambiguity": 0.3925,
+          "new_ambiguity": 0.3175,
+          "evidence": "3 layouts, played in order."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count",
+                "grid step"
+              ],
+              "relationships": [
+                "Ghost relights Candle by stepping onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Layout places Candle"
+              ]
+            },
+            {
+              "name": "Clock",
+              "type": "supporting",
+              "fields": [
+                "60-second real-time countdown"
+              ],
+              "relationships": [
+                "Clock ends run as loss if candles not all lit"
+              ]
+            },
+            {
+              "name": "Layout",
+              "type": "supporting",
+              "fields": [
+                "walls",
+                "candle positions",
+                "content deferred"
+              ],
+              "relationships": [
+                "Game has 3 ordered Layouts"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone 1 tile",
+                "route 8-12 steps"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone; catch ends run as loss with score = lit candles"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 1,
+          "matching_reasoning": "All entities matched by name."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:15::q:guard-start",
+        "round": 15,
+        "question_id": "guard-start",
+        "question_text": "Round 15 | Component: Guard | Targeting: goal | Why now: without a patrol start point the guard's first sweep cannot be placed, so the first candle's reachability is unknown | Ambiguity: 31.75%\n\nWhere does the guard start its patrol at the beginning of each layout?",
+        "question_hash": "38cbc5e556b72ac23723dc50ce884bf7",
+        "answer_hash": "ee355529c703ae525d23bffbd4dbaba0b3ee7ae690ab1c54cc4b51c2f35cbd44",
+        "selected_options": [
+          "Fixed start tile per layout, with the patrol starting at the same tile every run"
+        ],
+        "component": "guard",
+        "dimension": "goal",
+        "ambiguity_at_ask": 0.3175,
+        "lifecycle": "scored",
+        "answered_at": "2026-11-12T04:35:08.414Z",
+        "ambiguity": 0.28,
+        "scores": {
+          "goal": 0.6,
+          "constraints": 0.85,
+          "criteria": 0.75
+        },
+        "weakest_component_id": "mansion",
+        "weakest_dimension": "goal",
+        "component_scores": {
+          "ghost": {
+            "goal": 0.7,
+            "constraints": 0.85,
+            "criteria": 0.8,
+            "gaps": {
+              "goal": "Ghost start tile and key bindings not yet specified"
+            }
+          },
+          "mansion": {
+            "goal": 0.6,
+            "constraints": 0.85,
+            "criteria": 0.75,
+            "gaps": {
+              "goal": "Layout content deferred by user (explicit scope deferral)"
+            }
+          },
+          "guard": {
+            "goal": 0.85,
+            "constraints": 0.85,
+            "criteria": 0.85,
+            "gaps": {}
+          }
+        },
+        "structured_scorer_output": {
+          "triggers": [],
+          "trigger_status": "none",
+          "affected_component": "guard",
+          "affected_dimension": "goal",
+          "prior_dimension_score": 0.6,
+          "new_dimension_score": 0.85,
+          "prior_ambiguity": 0.28,
+          "new_ambiguity": 0.28,
+          "evidence": "Fixed patrol start tile per layout, same tile every run."
+        },
+        "ontology": {
+          "entities": [
+            {
+              "name": "Ghost",
+              "type": "core domain",
+              "fields": [
+                "position",
+                "lit-candle count",
+                "grid step"
+              ],
+              "relationships": [
+                "Ghost relights Candle by stepping onto it"
+              ]
+            },
+            {
+              "name": "Candle",
+              "type": "core domain",
+              "fields": [
+                "lit"
+              ],
+              "relationships": [
+                "Layout places Candle"
+              ]
+            },
+            {
+              "name": "Clock",
+              "type": "supporting",
+              "fields": [
+                "60-second real-time countdown"
+              ],
+              "relationships": [
+                "Clock ends run as loss if candles not all lit"
+              ]
+            },
+            {
+              "name": "Layout",
+              "type": "supporting",
+              "fields": [
+                "walls",
+                "candle positions",
+                "content deferred"
+              ],
+              "relationships": [
+                "Game has 3 ordered Layouts"
+              ]
+            },
+            {
+              "name": "Guard",
+              "type": "core domain",
+              "fields": [
+                "flashlight",
+                "fixed patrol route",
+                "flashlight cone 1 tile",
+                "route 8-12 steps",
+                "start tile per layout"
+              ],
+              "relationships": [
+                "Guard catches Ghost inside cone; catch ends run as loss with score = lit candles"
+              ]
+            }
+          ]
+        },
+        "ontology_stability": {
+          "stability_ratio": 1,
+          "matching_reasoning": "All entities matched by name."
+        }
+      },
+      {
+        "round_key": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di::r:16::q:restate-goal",
+        "round": 16,
+        "question_id": "restate-goal",
+        "question_text": "Restate check. Covering all three components, the agreed goal is: \"A single-screen browser game with no dependencies where the player steps a ghost one grid tile per key press onto each of 10 to 20 candles across 3 fixed layouts played in order, each within a real-time 60-second countdown, while a fixed-patrol guard whose 1-tile flashlight cone catches the ghost for an immediate loss; the score is the candles lit at the moment of the catch.\"\n\nIf someone read only this line, would they reach the same outcome you have in mind?",
+        "question_hash": "5afc9dd38e3eff013218fba4d442b6e1",
+        "answer_hash": "f7e2e045c247f456a0dc973c68f364499366e953e5a5e7c95e8931b39b44c5dd",
+        "selected_options": [
+          "Yes, crystallize"
+        ],
+        "component": "review-topology",
+        "dimension": "restate",
+        "ambiguity_at_ask": 0.28,
+        "lifecycle": "answered",
+        "answered_at": "2026-11-12T04:35:37.950Z"
+      }
+    ],
+    "established_facts": [],
+    "interview_id": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919-di",
+    "type": "greenfield",
+    "initial_idea": "--quick: A ghost relights all the candles in a mansion before the guard's flashlight catches it",
+    "topology": {
+      "status": "confirmed",
+      "confirmed_at": "2026-11-12T13:30:00+09:00",
+      "components": [
+        {
+          "id": "ghost",
+          "name": "Ghost",
+          "description": "Grid step per key press; relights candles by stepping onto them; 60-second real-time countdown",
+          "status": "active",
+          "evidence": [
+            "A ghost relights all the candles",
+            "Round 1: player controls ghost",
+            "Round 4: walk onto candle, instant",
+            "Round 8: 60 second time limit",
+            "Round 11: grid step per key press",
+            "Round 12: real-time countdown"
+          ],
+          "clarity_scores": {
+            "goal": 0.7,
+            "constraints": 0.85,
+            "criteria": 0.8,
+            "context": null
+          },
+          "weakest_dimension": "goal"
+        },
+        {
+          "id": "mansion",
+          "name": "Mansion",
+          "description": "One screen, one room; 3 fixed hand-authored layouts played in order; 10-20 candles each; win = all lit within 60 seconds; layout content deferred",
+          "status": "active",
+          "evidence": [
+            "in a mansion",
+            "Round 2: single screen, one room, about 10 to 20 candles",
+            "Round 5: win = all lit within fixed time limit",
+            "Round 7: several fixed hand-authored layouts, chosen in order",
+            "Round 8: 60 seconds",
+            "Round 10: layout content deferred by user",
+            "Round 14: 3 layouts"
+          ],
+          "clarity_scores": {
+            "goal": 0.6,
+            "constraints": 0.85,
+            "criteria": 0.75,
+            "context": null
+          },
+          "weakest_dimension": "goal"
+        },
+        {
+          "id": "guard",
+          "name": "Guard",
+          "description": "Fixed patrol route, 8-12 steps; 1-tile cone ahead; catch = immediate loss; score = candles lit at catch",
+          "status": "active",
+          "evidence": [
+            "before the guard's flashlight catches it",
+            "Round 3: fixed patrol route, catch if inside cone",
+            "Round 6: catch ends run as loss",
+            "Round 9: score = candles lit at catch",
+            "Round 13: cone 1 tile ahead, route 8-12 steps"
+          ],
+          "clarity_scores": {
+            "goal": 0.6,
+            "constraints": 0.85,
+            "criteria": 0.85,
+            "context": null
+          },
+          "weakest_dimension": "goal"
+        }
+      ],
+      "deferrals": [],
+      "last_targeted_component_id": "mansion"
+    },
+    "ontology_snapshots": [],
+    "auto_answered_rounds": [],
+    "lateral_reviews": [],
+    "lateral_panel_failures": 0,
+    "auto_answer_streak": 0,
+    "refined_rounds": [],
+    "closure_overrides": [],
+    "ambiguity_milestone": "ready",
+    "architect_failures": 0,
+    "ambiguity_floor": {
+      "floor": 0,
+      "disputed_fact_count": 0,
+      "unscored_active_component_count": 0,
+      "auto_answer_ratio": 0
+    },
+    "intent_contract": {
+      "version": 1,
+      "items": [
+        {
+          "id": "artifact:game-design-doc",
+          "category": "artifact",
+          "statement": "A GAME_DESIGN.md spec is the single source of truth for the game."
+        },
+        {
+          "id": "artifact:single-html-game",
+          "category": "artifact",
+          "statement": "Deliver one index.html that runs in a browser."
+        },
+        {
+          "id": "constraint:no-deps",
+          "category": "constraint",
+          "statement": "HTML, Canvas 2D, and plain JavaScript ES modules only; no build step, framework, or external library."
+        },
+        {
+          "id": "integration:none",
+          "category": "integration",
+          "statement": "No server, database, or external assets."
+        },
+        {
+          "id": "surface:canvas-screen",
+          "category": "surface",
+          "statement": "One screen rendered with Canvas 2D; no mobile or responsive layout."
+        }
+      ],
+      "digest": "9e1628bb9d790a8d54eeb04161084d8af4da8918b23d68940ef835348d5783b6",
+      "confirmation_round": 0,
+      "confirmation_answer_hash": "0f5eeb91115a109c71e8aab455fac4d1eb34cafc77248ebfd0adc05d7e3cb131",
+      "confirmation_evidence": "answer_hash:0f5eeb91115a109c71e8aab455fac4d1eb34cafc77248ebfd0adc05d7e3cb131"
+    },
+    "current_ambiguity": 0.28,
+    "restated_goal": "A single-screen browser game with no dependencies where the player steps a ghost one grid tile per key press onto each of 10 to 20 candles across 3 fixed layouts played in order, each within a real-time 60-second countdown, while a fixed-patrol guard whose 1-tile flashlight cone catches the ghost for an immediate loss; the score is the candles lit at the moment of the catch.",
+    "intent_review": {
+      "status": "not_required",
+      "supporting_substitutions": [],
+      "version": 1,
+      "locked_digest": "9e1628bb9d790a8d54eeb04161084d8af4da8918b23d68940ef835348d5783b6",
+      "observed_digest": "3476cc230bb093e8b05a8dbb63328ab96ef0f0859e27e57c4178a646adc11966",
+      "removed_locked_ids": []
+    }
+  },
+  "state_revision": 36,
+  "spec_slug": "dotgame-ghost-candles",
+  "spec_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/specs/deep-interview-dotgame-ghost-candles.md",
+  "spec_sha256": "a1f8cb2010a8870df95d451e9ef773223a7c3216151c64780ac5f0e5081b6320",
+  "spec_stage": "final",
+  "spec_persisted_at": "2026-11-12T04:36:06.351Z"
+}
