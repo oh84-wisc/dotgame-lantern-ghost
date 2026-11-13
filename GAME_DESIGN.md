@@ -1,4 +1,4 @@
-# GAME_DESIGN.md (v0)
+# GAME_DESIGN.md (v3)
 
 근거 문서: `.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/specs/deep-interview-dotgame-ghost-candles.md`
 표기: `(에이전트 제안)`은 스펙에 없어 에이전트가 정했던 값이다. 사용자가 승인한 값은 표기를 뺐다 (2장 이동 값, 4·5·6장 전체).

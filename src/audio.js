@@ -1,6 +1,6 @@
-// Sound effects with Web Audio synthesis only (no audio files, no background music).
-// GAME_DESIGN.md chapter 7. The AudioContext is created on the [시작] click (browser autoplay rule).
-// Every call is wrapped: a sound failure never breaks play.
+// 효과음은 Web Audio로 직접 합성한다 (오디오 파일 없음, 배경음악 없음).
+// 기획서 7장 기준. AudioContext는 [시작]을 누를 때 처음 만든다 (브라우저가 사용자 클릭 전 소리를 막기 때문).
+// 모든 소리 호출은 try/catch로 감싼다. 소리가 실패해도 게임은 계속된다.
 let context = null;
 
 export function unlockAudio() {
@@ -31,7 +31,7 @@ function play(notes) {
     const now = context.currentTime;
     for (const note of notes) tone(now + (note.delay ?? 0), note);
   } catch {
-    // Ignore audio failures; the game continues silently.
+    // 소리 오류는 무시한다. 게임은 소리 없이 계속된다.
   }
 }
 

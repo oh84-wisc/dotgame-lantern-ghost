@@ -1,4 +1,4 @@
-// All UI text lives here (AGENTS.md).
+// 화면에 보이는 문구는 모두 여기에 둔다 (AGENTS.md 규칙).
 export const STRINGS = {
   title: "Lantern Ghost",
   start: "시작",

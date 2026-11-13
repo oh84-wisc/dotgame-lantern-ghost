@@ -40,7 +40,7 @@ R3 플랜(`b26e969c…`)은 goal-4·goal-5의 완료 조건을 "사람이 브라
 - 에이전트는 quality-gate 필드를 지어내지 않고 멈췄고, `--force`도 쓰지 않았다.
 
 **못 막은 것**
-- AGENTS.md 템플릿의 "index.html 열기"는 ES module을 쓰면 `file://`에서 열리지 않는다. 첫 브라우저 확인이 빈 화면(콘솔 CORS 오류)이었다. 실행 줄을 로컬 서버로 고쳤다 (R1, 사람 개입).
+- AGENTS.md 템플릿의 "index.html 열기"는 ES module을 쓰면 `file://`에서 열리지 않는다. 첫 브라우저 확인이 빈 화면(콘솔 CORS 오류)이었다. 실행 줄을 로컬 서버로 고쳤다 (R1, 사람 개입). 이는 스펙 4.2의 "index.html을 더블클릭하면 서버 없이 열린다"와 충돌한다. 템플릿 자체가 ES modules를 요구하므로 둘을 동시에 만족할 수 없었고, README의 실행 방법과 GitHub Pages 링크로 대신했다.
 - ralplan 승인 gate가 R2와 R3에서 선택을 기록하지 못했고, 에이전트가 먼저 `handoff`로 바꾼 상태가 되돌려지지 않았다(`--force` 필요). 스펙의 `gjc ultragoal create-goals --brief-file`로 우회했다.
 - R3 ralplan 기록에 stage-01 planner가 잘못된 내용(경로 문자열)으로 남았고, 두 번째 critic이 architect 타입으로 기록됐다.
 - 에이전트가 `design-v3` 커밋 없이 기획서 변경을 goal-4·goal-5 커밋에 섞었고, 4장에 R1 시절 문구("R2 이후에 그린다")가 남았다. 사람이 짚은 뒤 `design-v3`로 정리했다 (`8515635`).

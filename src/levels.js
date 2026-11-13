@@ -1,6 +1,6 @@
-// Layouts, copied character-for-character from GAME_DESIGN.md chapter 5.
-// 20 columns x 15 rows = 320 x 240 px at 16 px per tile.
-// Symbols: # wall, . floor, S ghost start, c candle, G guard start.
+// 레이아웃 맵. 기획서 5장의 문자를 글자 하나도 바꾸지 않고 복사했다.
+// 20열 x 15행 = 320 x 240 px (타일 하나가 16 px).
+// 기호: # 벽, . 바닥, S 유령 시작, c 촛불, G 경비병 시작.
 const LAYOUT_1 = [
   "####################",
   "#S.....c..#.....c..#",
@@ -55,9 +55,9 @@ const LAYOUT_3 = [
   "####################",
 ];
 
-// Guard patrol loops, GAME_DESIGN.md chapter 5. Each entry is [x, y]: x = column from 0,
-// y = row index from 0 (the doc's row number minus 1). The loop wraps back to index 0,
-// which is the guard start G. Coordinates are an explicit AGENTS.md exception (patrol only).
+// 경비병 순찰 고리 (기획서 5장). 칸마다 [x, y]이고, x는 0부터 센 열 번호,
+// y는 0부터 센 행 번호다 (기획서의 행 번호에서 1을 뺀 값). 고리는 마지막 칸 다음에 0번으로 돌아가며,
+// 0번 칸이 경비병 시작 칸 G다. 좌표를 쓰는 것은 AGENTS.md가 허용한 예외다 (순찰 고리만).
 const PATROL_1 = [
   [9, 13],
   [10, 13],
@@ -97,7 +97,7 @@ const PATROL_3 = [
   [10, 10],
 ];
 
-// Fixed play order: layout 1, then 2, then 3 (GAME_DESIGN.md chapter 2, R14).
+// 플레이 순서는 고정이다: 레이아웃 1 -> 2 -> 3 (기획서 2장, 스펙 R14).
 export const LAYOUTS = [
   { rows: LAYOUT_1, patrol: PATROL_1 },
   { rows: LAYOUT_2, patrol: PATROL_2 },

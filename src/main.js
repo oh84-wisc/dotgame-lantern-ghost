@@ -1,4 +1,4 @@
-// Browser glue: input, timer frames, drawing, sound, high score, and screen panels. Rules live in logic.js.
+// 브라우저 연결부: 입력, 프레임 타이머, 그리기, 소리, 최고 점수, 화면 패널. 게임 규칙은 logic.js에 있다.
 import {
   createState,
   stepTurn,
@@ -17,7 +17,7 @@ import { STRINGS, timerText, candleText, totalCandleText, highScoreText } from "
 import { readHighScore, writeHighScore, nextHighScore } from "./score.js";
 import { unlockAudio, playCandle, playClear, playLose, playWin } from "./audio.js";
 
-const MOVE_LOCK_MS = 120; // GAME_DESIGN.md chapter 2: one tile takes 120 ms; keys during the move are ignored.
+const MOVE_LOCK_MS = 120; // 기획서 2장: 한 칸 이동은 120 ms이고, 이동 중에 들어온 방향키는 무시한다.
 
 const KEY_TO_DIRECTION = {
   ArrowUp: "up",
@@ -112,16 +112,16 @@ function renderPanel() {
   shownScreen = state.screen;
 }
 
-// A finished run (win or loss, including a 0 score) updates and saves the high score.
+// 판이 끝나면 (승리든 패배든, 점수 0도 포함) 최고 점수를 갱신하고 저장한다.
 function finishRun(finished) {
   highScore = nextHighScore(highScore, runScore(finished));
   writeHighScore(highScore);
 }
 
-// Sound and run-end effects for one state change. When one turn both ends the run and lights a
-// candle, only the end sound plays (GAME_DESIGN.md chapter 7).
+// 상태가 바뀔 때마다 소리와 판 종료 처리를 한다. 한 턴에 판이 끝나면서 촛불도 켜지면
+// 끝나는 소리만 낸다 (기획서 7장).
 function applyEvents(prev, next) {
-  if (prev.screen !== "playing") return; // a finished run is handled once, when it ends
+  if (prev.screen !== "playing") return; // 끝난 판은 끝나는 순간 한 번만 처리한다
   if (next.screen === "lose") {
     playLose();
     finishRun(next);
@@ -150,12 +150,12 @@ function frame(now) {
 window.addEventListener("keydown", (event) => {
   const direction = KEY_TO_DIRECTION[event.key];
   if (!direction) return;
-  event.preventDefault(); // arrow keys never scroll the page
-  if (event.repeat) return; // one press = one tile
+  event.preventDefault(); // 방향키로 페이지가 스크롤되지 않게 막는다
+  if (event.repeat) return; // 키를 길게 눌러도 한 번 누른 것으로 친다 (한 번 = 한 칸)
   const now = performance.now();
   if (now < lockedUntil) return;
   const next = stepTurn(state, direction);
-  if (next === state) return; // wall or edge: no turn used
+  if (next === state) return; // 벽이나 화면 밖이면 턴을 쓰지 않는다
   applyEvents(state, next);
   state = next;
   lockedUntil = now + MOVE_LOCK_MS;
@@ -163,7 +163,7 @@ window.addEventListener("keydown", (event) => {
 
 primaryButton.addEventListener("click", () => {
   if (state.screen === "start") {
-    unlockAudio(); // AudioContext is created on a user gesture
+    unlockAudio(); // 사용자가 클릭할 때 AudioContext를 만든다
     state = startGame(state);
   } else {
     state = restartGame();
