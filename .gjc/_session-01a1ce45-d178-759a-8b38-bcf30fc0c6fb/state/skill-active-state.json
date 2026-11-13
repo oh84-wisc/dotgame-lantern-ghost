@@ -3,15 +3,15 @@
   "active": true,
   "skill": "ultragoal",
   "phase": "blocked",
-  "updated_at": "2026-11-13T01:21:56.560Z",
+  "updated_at": "2026-11-13T01:42:14.349Z",
   "session_id": "01a1ce45-d178-759a-8b38-bcf30fc0c6fb",
   "active_skills": [
     {
       "skill": "ultragoal",
       "phase": "blocked",
       "active": true,
-      "activated_at": "2026-11-13T01:21:56.560Z",
-      "updated_at": "2026-11-13T01:21:56.560Z",
+      "activated_at": "2026-11-13T01:42:14.349Z",
+      "updated_at": "2026-11-13T01:42:14.349Z",
       "session_id": "01a1ce45-d178-759a-8b38-bcf30fc0c6fb",
       "hud": {
         "version": 1,
@@ -43,7 +43,7 @@
             "priority": 35
           }
         ],
-        "updated_at": "2026-11-13T01:21:56.559Z"
+        "updated_at": "2026-11-13T01:42:14.348Z"
       },
       "receipt": {
         "version": 1,
@@ -52,20 +52,20 @@
         "command": "gjc ultragoal (reconcile)",
         "state_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1ce45-d178-759a-8b38-bcf30fc0c6fb/state/skill-active-state.json",
         "storage_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1ce45-d178-759a-8b38-bcf30fc0c6fb/state/ultragoal-state.json",
-        "mutated_at": "2026-11-13T01:21:56.553Z",
-        "fresh_until": "2026-11-13T01:51:56.553Z",
+        "mutated_at": "2026-11-13T01:42:14.342Z",
+        "fresh_until": "2026-11-13T02:12:14.342Z",
         "status": "fresh",
-        "mutation_id": "ultragoal:reconcile:2026-11-13T01:21:56.553Z",
+        "mutation_id": "ultragoal:reconcile:2026-11-13T01:42:14.342Z",
         "verb": "reconcile",
         "forced": true,
         "from_phase": "blocked",
         "to_phase": "blocked"
       },
-      "source_state_revision": 6,
-      "state_revision": 6
+      "source_state_revision": 9,
+      "state_revision": 9
     }
   ],
   "active_subskills": [],
-  "source_state_revision": 21,
-  "state_revision": 21
+  "source_state_revision": 24,
+  "state_revision": 24
 }
