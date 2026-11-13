@@ -1,5 +1,4 @@
 // Browser glue: input, timer frames, drawing, and screen panels. Rules live in logic.js.
-import { LAYOUT_1 } from "./levels.js";
 import {
   createState,
   stepTurn,
@@ -10,10 +9,11 @@ import {
   isCandleLit,
   isWall,
   sightTile,
-  totalCandles,
+  runScore,
+  TOTAL_CANDLES,
 } from "./logic.js";
 import { PALETTE, TILE_SIZE, tileColorIndex, candleColorIndex } from "./sprites.js";
-import { STRINGS, timerText, candleText } from "./strings.js";
+import { STRINGS, timerText, candleText, totalCandleText } from "./strings.js";
 
 const MOVE_LOCK_MS = 120; // GAME_DESIGN.md chapter 2: one tile takes 120 ms; keys during the move are ignored.
 
@@ -34,7 +34,7 @@ const panelDetail = document.getElementById("panel-detail");
 const primaryButton = document.getElementById("primary");
 const secondaryButton = document.getElementById("secondary");
 
-let state = createState(LAYOUT_1);
+let state = createState(0);
 let lockedUntil = 0;
 let lastFrame = performance.now();
 let shownScreen = null;
@@ -65,7 +65,7 @@ function drawBoard() {
     }
   });
   if (state.screen === "playing" || state.screen === "lose" || state.screen === "win") {
-    const sight = sightTile(state.guard);
+    const sight = sightTile(state);
     if (!isWall(state, sight.x, sight.y)) {
       ctx.fillStyle = PALETTE[8];
       ctx.fillRect(sight.x * TILE_SIZE, sight.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
@@ -79,11 +79,10 @@ function drawBoard() {
 
 function renderHud() {
   hudTimer.textContent = timerText(state.timeLeftMs);
-  hudCandles.textContent = candleText(state.lit.length, totalCandles(state));
+  hudCandles.textContent = candleText(runScore(state), TOTAL_CANDLES);
 }
 
 function renderPanel() {
-  const total = totalCandles(state);
   if (state.screen === "playing") {
     panel.hidden = true;
   } else {
@@ -95,7 +94,10 @@ function renderPanel() {
       secondaryButton.hidden = true;
     } else {
       panelMessage.textContent = state.screen === "win" ? STRINGS.win : STRINGS.lose;
-      panelDetail.textContent = candleText(state.lit.length, total);
+      panelDetail.textContent =
+        state.screen === "win"
+          ? totalCandleText(runScore(state), TOTAL_CANDLES)
+          : candleText(runScore(state), TOTAL_CANDLES);
       primaryButton.textContent = STRINGS.restart;
       secondaryButton.textContent = STRINGS.home;
       secondaryButton.hidden = false;
@@ -128,11 +130,11 @@ window.addEventListener("keydown", (event) => {
 });
 
 primaryButton.addEventListener("click", () => {
-  state = state.screen === "start" ? startGame(state) : restartGame(state);
+  state = state.screen === "start" ? startGame(state) : restartGame();
 });
 
 secondaryButton.addEventListener("click", () => {
-  state = goHome(state);
+  state = goHome();
 });
 
 applyTheme();

@@ -1,7 +1,7 @@
-// Layout 1, copied character-for-character from GAME_DESIGN.md chapter 5.
+// Layouts, copied character-for-character from GAME_DESIGN.md chapter 5.
 // 20 columns x 15 rows = 320 x 240 px at 16 px per tile.
 // Symbols: # wall, . floor, S ghost start, c candle, G guard start.
-export const LAYOUT_1 = [
+const LAYOUT_1 = [
   "####################",
   "#S.....c..#.....c..#",
   "#..c.....#...c.....#",
@@ -19,9 +19,46 @@ export const LAYOUT_1 = [
   "####################",
 ];
 
-// Guard patrol loop for layout 1, GAME_DESIGN.md chapter 5 (R2). Each entry is [x, y],
-// x = column from 0, y = row index from 0 (the doc's row number minus 1). Loops back to index 0.
-export const PATROL_1 = [
+const LAYOUT_2 = [
+  "####################",
+  "#S..c..c..#..c.c.#.#",
+  "#.#######.#......#.#",
+  "#.........#.#####..#",
+  "#.c#......#........#",
+  "#..#.####.....#...##",
+  "#..#........c.#.c.##",
+  "#######.#.##..#....#",
+  "#....c..#...c...c..#",
+  "#.#####.#.#......#.#",
+  "#.........#......#.#",
+  "#c..#.#####..##..#.#",
+  "#...#.....#.G......#",
+  "#...#..cc.#......c.#",
+  "####################",
+];
+
+const LAYOUT_3 = [
+  "####################",
+  "#Sc..c..#...c......#",
+  "#.......#.#######..#",
+  "#.#####.#.........c#",
+  "#...c.c.#.c###c.#..#",
+  "#.#....c....#...#..#",
+  "#c#.###.#...#...#..#",
+  "###.....#...#..c...#",
+  "#.#.###.#c.......#.#",
+  "#.#..c...........#.#",
+  "#.....#....###...#c#",
+  "#...#.#...G......#.#",
+  "#######.#........#.#",
+  "#...#.#.#.c.c..#...#",
+  "####################",
+];
+
+// Guard patrol loops, GAME_DESIGN.md chapter 5. Each entry is [x, y]: x = column from 0,
+// y = row index from 0 (the doc's row number minus 1). The loop wraps back to index 0,
+// which is the guard start G. Coordinates are an explicit AGENTS.md exception (patrol only).
+const PATROL_1 = [
   [9, 13],
   [10, 13],
   [11, 13],
@@ -30,4 +67,39 @@ export const PATROL_1 = [
   [11, 12],
   [10, 12],
   [9, 12],
+];
+
+const PATROL_2 = [
+  [12, 12],
+  [13, 12],
+  [14, 12],
+  [15, 12],
+  [15, 11],
+  [15, 10],
+  [14, 10],
+  [13, 10],
+  [12, 10],
+  [12, 11],
+];
+
+const PATROL_3 = [
+  [10, 11],
+  [11, 11],
+  [12, 11],
+  [13, 11],
+  [14, 11],
+  [14, 10],
+  [14, 9],
+  [13, 9],
+  [12, 9],
+  [11, 9],
+  [10, 9],
+  [10, 10],
+];
+
+// Fixed play order: layout 1, then 2, then 3 (GAME_DESIGN.md chapter 2, R14).
+export const LAYOUTS = [
+  { rows: LAYOUT_1, patrol: PATROL_1 },
+  { rows: LAYOUT_2, patrol: PATROL_2 },
+  { rows: LAYOUT_3, patrol: PATROL_3 },
 ];

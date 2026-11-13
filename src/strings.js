@@ -15,3 +15,7 @@ export function timerText(timeLeftMs) {
 export function candleText(lit, total) {
   return `켜진 촛불 ${lit}/${total}`;
 }
+
+export function totalCandleText(lit, total) {
+  return `총 켜진 촛불 ${lit}/${total}`;
+}
