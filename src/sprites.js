@@ -13,8 +13,13 @@ export const PALETTE = {
 
 export const TILE_SIZE = 16;
 
-// R1 draws only wall (2), floor (3), and ghost (6). Candle and guard tiles render as floor.
+// Wall (2) or floor (3). Candles, guard and ghost start tiles are drawn as floor and
+// then overlaid by the caller.
 export function tileColorIndex(symbol) {
   if (symbol === "#") return 2;
   return 3;
+}
+
+export function candleColorIndex(isLit) {
+  return isLit ? 5 : 4;
 }
