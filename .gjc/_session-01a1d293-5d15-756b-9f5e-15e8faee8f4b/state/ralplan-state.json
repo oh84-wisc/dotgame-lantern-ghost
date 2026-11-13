@@ -1,0 +1,52 @@
+{
+  "active": true,
+  "version": 2,
+  "current_phase": "handoff",
+  "skill": "ralplan",
+  "cwd": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost",
+  "updated_at": "2026-11-13T02:02:34.619Z",
+  "session_id": "01a1d293-5d15-756b-9f5e-15e8faee8f4b",
+  "repository_binding": {
+    "schema": "gjc.repository_binding.v1",
+    "worktreeRoot": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost",
+    "commonDir": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.git",
+    "displayPath": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost",
+    "head": "a27754a676bb5d47789a418ebe4ba208ba5ee9f3",
+    "branch": "master"
+  },
+  "receipt": {
+    "version": 1,
+    "skill": "ralplan",
+    "owner": "gjc-state-cli",
+    "command": "gjc state ralplan write",
+    "state_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/state/skill-active-state.json",
+    "storage_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/state/ralplan-state.json",
+    "mutated_at": "2026-11-13T02:02:34.619Z",
+    "fresh_until": "2026-11-13T02:32:34.619Z",
+    "status": "fresh",
+    "mutation_id": "ralplan:2026-11-13T02:02:34.619Z",
+    "content_sha256": {
+      "algorithm": "sha256",
+      "value": "70fcf41e1e742043864e2e20652d2eaca374ea764984913e236508e287baeb7c",
+      "covered_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/state/ralplan-state.json",
+      "computed_at": "2026-11-13T02:02:34.621Z"
+    }
+  },
+  "run_id": "01a1d293-5d15-756b-9f5e-15e8faee8f4b",
+  "last_review_verdict": "OKAY",
+  "last_review_verdict_lane": "critic",
+  "last_review_verdict_stage_n": 4,
+  "auto_handoff": {
+    "configuredTarget": "off",
+    "effectiveTarget": "off",
+    "degradationReason": null,
+    "source": "default"
+  },
+  "final_admission_phase_transition": {
+    "run_id": "01a1d293-5d15-756b-9f5e-15e8faee8f4b",
+    "final_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/plans/ralplan/01a1d293-5d15-756b-9f5e-15e8faee8f4b/stage-04-final.md",
+    "final_sha256": "b26e969ce5330ff6c09a2dcf12f0d4c296e020bba6b8df5a95f9ffb4a9e665f1",
+    "auto_handoff_sha256": "baf1bde06b9be0458d9d81bf55e067158d2cf07d30b198d609a3dec519b416b1"
+  },
+  "state_revision": 2
+}

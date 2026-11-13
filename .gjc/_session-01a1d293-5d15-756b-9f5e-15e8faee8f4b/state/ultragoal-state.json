@@ -1,0 +1,69 @@
+{
+  "skill": "ultragoal",
+  "status": "blocked",
+  "current_phase": "blocked",
+  "active": true,
+  "goals": [
+    {
+      "id": "G001",
+      "title": "# RALPLAN Revision 2: R3 쉘 (goal-4 레이아웃 2·3, goal-5 사운드·최고 점수·최종 화면)",
+      "status": "blocked"
+    },
+    {
+      "id": "G002",
+      "title": "Human acceptance: AGENTS.md wording and browser checks AC-4.1-4.9, AC-5.1-5.8",
+      "status": "pending"
+    }
+  ],
+  "counts": {
+    "pending": 1,
+    "active": 0,
+    "complete": 0,
+    "failed": 0,
+    "blocked": 1,
+    "review_blocked": 0,
+    "superseded": 0
+  },
+  "active_goal_id": "G002",
+  "ledger_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/ultragoal/ledger.jsonl",
+  "brief_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/ultragoal/brief.md",
+  "goals_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/ultragoal/goals.json",
+  "gjc_objective": "Complete the durable ultragoal plan in .gjc/ultragoal/goals.json, including later accepted/appended stories, under the original brief constraints; use .gjc/ultragoal/ledger.jsonl as the audit trail.",
+  "nudge_budget": 6,
+  "nudge_count": 0,
+  "nudge_remaining": 6,
+  "nudge_goal_id": "G002",
+  "nudge_target_kind": "story",
+  "latestLedgerEvent": {
+    "event": "goal_checkpointed",
+    "goalId": "G001",
+    "timestamp": "2026-11-13T02:54:59.522Z",
+    "evidence": "Acceptance AC-4.1..4.9 and AC-5.1..5.8 passed in the user's browser (2026-11-13). Complete checkpoint refused: 'unable to resolve an authoritative integration base' (repo has no remote; quality-gate architectReview and executorQa not run). Kept blocked per instruction. Commits c688ae3, 4f41971, and the AGENTS.md exception commit; node --test test/ 43 pass."
+  },
+  "version": 2,
+  "updated_at": "2026-11-13T02:54:59.532Z",
+  "receipt": {
+    "version": 1,
+    "skill": "ultragoal",
+    "owner": "gjc-runtime",
+    "command": "gjc ultragoal (reconcile)",
+    "state_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/state/skill-active-state.json",
+    "storage_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/state/ultragoal-state.json",
+    "mutated_at": "2026-11-13T02:54:59.532Z",
+    "fresh_until": "2026-11-13T03:24:59.532Z",
+    "status": "fresh",
+    "mutation_id": "ultragoal:reconcile:2026-11-13T02:54:59.532Z",
+    "verb": "reconcile",
+    "from_phase": "pending",
+    "to_phase": "blocked",
+    "forced": true,
+    "content_sha256": {
+      "algorithm": "sha256",
+      "value": "e50bcc5a85c283f0af77d2899761902ea08f6804ffba66256b761a2efcf4d619",
+      "covered_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/state/ultragoal-state.json",
+      "computed_at": "2026-11-13T02:54:59.532Z"
+    }
+  },
+  "session_id": "01a1d293-5d15-756b-9f5e-15e8faee8f4b",
+  "state_revision": 10
+}
