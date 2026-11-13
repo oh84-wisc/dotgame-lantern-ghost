@@ -44,6 +44,7 @@ let lastFrame = performance.now();
 let shownScreen = null;
 
 function applyTheme() {
+  document.title = STRINGS.title; // 탭 제목도 화면 문구와 같이 strings.js 한 곳에서 가져온다
   document.body.style.background = PALETTE[1];
   document.body.style.color = PALETTE[4];
   for (const button of [primaryButton, secondaryButton]) {

@@ -23,9 +23,9 @@
 - 18줄: 코드·테스트(43개)가 끝난 뒤 G001 complete checkpoint가 "unable to resolve an authoritative integration base"로 거절됐다. 19~20줄: G002를 active로 올렸다가 "quality-gate evidence missing"으로 pending으로 되돌렸다.
 
 **원인 판정: 기획서 쪽도, 에이전트가 기획서를 안 따른 것도 아니다. ralplan 플랜의 goal 구조 쪽이다.**
-R3 플랜(`b26e969c…`)은 goal-4·goal-5의 완료 조건을 "사람이 브라우저에서 확인"으로 썼지만, 사람 확인 단계를 별도 goal로 나누지 않았다. 그래서 pause gate가 G001을 "아직 할 일이 남은 goal"로 보고 6번 되돌렸다. 에이전트는 명령 인자를 몰라 steering을 4번 틀렸다. 이 부분은 에이전트 쪽이다.
+R3 플랜(`.gjc/_session-01a1d293-…/plans/ralplan/…/stage-04-final.md`, sha256 `b26e969c…`)은 goal-4·goal-5의 완료 조건을 "사람이 브라우저에서 확인"으로 썼지만, 사람 확인 단계를 별도 goal로 나누지 않았다. 그래서 pause gate가 G001을 "아직 할 일이 남은 goal"로 보고 6번 되돌렸다. 에이전트는 명령 인자를 몰라 steering을 4번 틀렸다. 이 부분은 에이전트 쪽이다.
 
-**replan(`replan-N:` 커밋)은 하지 않았다.** 5.2의 첫째 신호(nudge 예산 소진)에 해당할 수 있었지만, 소진은 코드가 막힌 것이 아니라 pause gate가 사람 확인 단계를 알아보지 못해서 생겼고, 코드·테스트·사람 확인은 모두 끝난 상태였다. 그래서 plan을 다시 쓰는 대신 G002로 쪼개서 풀었다. 되돌아보면 사람 확인을 처음부터 별도 goal로 나눈 plan이 맞았고, 이 점이 이번 실행의 가장 큰 아쉬움이다.
+**replan(`replan-N:` 커밋)은 하지 않았다.** 5.2의 첫째 신호(nudge 예산 소진)에 해당할 수 있었지만, 소진은 코드가 막힌 것이 아니라 pause gate가 사람 확인 단계를 알아보지 못해서 생겼고, 코드·테스트·사람 확인은 모두 끝난 상태였다. 그래서 plan을 다시 쓰는 대신 G002로 쪼개는 쪽을 택했다. 그런데 이 분리는 nudge 2회 뒤인 10줄에서 받아들여졌고, 그 뒤에도 nudge 3~6회(11, 13, 14, 17줄)가 더 일어났다. 즉 G002 분리는 nudge 소진을 막지 못했고, 예산은 결국 다 쓰였으며, 최종 상태는 G001 blocked·G002 pending이다. 되돌아보면 사람 확인을 처음부터 별도 goal로 나눈 plan이 맞았고, nudge 소진을 신호로 ralplan으로 돌아갔어야 했다. 이 점이 이번 실행의 가장 큰 아쉬움이다.
 다른 라운드는 nudge가 R1 ledger 4줄, R2 ledger 2줄에서 1번씩만 있었고 예산에 닿지 않았다. 같은 AC가 사람 확인에서 두 번 연속 X가 된 일은 없었고, 기획서에 없는 기능을 만든 일도 없었다.
 
 **G001·G002가 complete 되지 못한 이유.** completion gate가 처음에는 `bun test:e2e`·`bun test:red-team`과 integration base를 요구했고(R1 ledger 15, 20줄), remote를 만든 뒤에는 architectReview·executorQa·iteration이 든 quality-gate JSON을 요구했다(R3 ledger 18~20줄). 스펙이 `package.json`·`bun`을 금지하므로 앞의 요구는 스펙과 충돌했다. 뒤의 요구는 실제 리뷰 결과가 필요한데 실행하지 않았고, 에이전트는 그 필드를 지어내지 않고 멈췄다. 두 goal은 blocked/pending으로 남겼다.
@@ -36,11 +36,11 @@ R3 플랜(`b26e969c…`)은 goal-4·goal-5의 완료 조건을 "사람이 브라
 - AGENTS.md "좌표를 따로 적지 않는다": 경비병 순찰 고리가 맵 문자로 표현되지 않아 충돌했고, 에이전트가 임의로 어기지 않고 ralplan 단계에서 멈춰 사람에게 물었다. 승인은 코드 작성 전에 받았다 (R3 플랜 "Intent Reconciliation", 예외 한 줄을 실행 때 추가한다고 명시). 다만 그 한 줄을 AGENTS.md에 커밋한 것은 좌표 배열이 든 goal-4·goal-5 커밋(`c688ae3`, `4f41971`)보다 뒤인 `5e8d504`다. 승인 순서는 지켰지만 커밋 순서는 어긋났고, 이 부분은 하네스가 막지 못했다.
 - AGENTS.md 완료 조건 "테스트 통과는 완료가 아니다": R1~R3 모두 goal이 사람 브라우저 확인 전에는 pause에 머물렀다.
 - ralplan planner 질문: 승리하면 항상 42/42라 최고 점수가 첫 승리 뒤 의미가 없어진다는 점을 코드 전에 잡았다. 스펙을 바꾸지 않기로 했다.
-- R1 critic 지적 C7과 R2·R3 architect/critic 재검토: 점수 분모 `/12`→`/42`, AC 문구, 5장 편집 목록의 빠진 항목이 플랜에서 고쳐졌다.
+- R1 architect 지적 C7(`stage-01-architect.md` 23줄, "서버 없음 vs http.server")과 R2·R3 architect/critic 재검토: 서버 실행 방식, 점수 분모 `/12`→`/42`, AC 문구, 5장 편집 목록의 빠진 항목이 플랜 단계에서 고쳐졌다.
 - 에이전트는 quality-gate 필드를 지어내지 않고 멈췄고, `--force`도 쓰지 않았다.
 
 **못 막은 것**
-- AGENTS.md 템플릿의 "index.html 열기"는 ES module을 쓰면 `file://`에서 열리지 않는다. 첫 브라우저 확인이 빈 화면(콘솔 CORS 오류)이었다. 실행 줄을 로컬 서버로 고쳤다 (R1, 사람 개입). 이는 스펙 4.2의 "index.html을 더블클릭하면 서버 없이 열린다"와 충돌한다. 템플릿 자체가 ES modules를 요구하므로 둘을 동시에 만족할 수 없었고, README의 실행 방법과 GitHub Pages 링크로 대신했다.
+- AGENTS.md 템플릿의 "index.html 열기"는 ES module을 쓰면 `file://`에서 열리지 않는다. 첫 브라우저 확인이 빈 화면(콘솔 CORS 오류)이었다. 같은 충돌을 R1 architect C7이 플랜 단계에서 이미 짚었고 플랜은 `http.server` 기본으로 고쳤지만, 사람이 복사한 AGENTS.md의 실행 줄은 그대로 남아 있었다. 플랜의 결정이 AGENTS.md로 옮겨지지 않은 것이다. 실행 줄을 로컬 서버로 고쳤다 (R1, 사람 개입). 이는 스펙 4.2의 "index.html을 더블클릭하면 서버 없이 열린다"와 충돌한다. 템플릿 자체가 ES modules를 요구하므로 둘을 동시에 만족할 수 없었고, README의 실행 방법과 GitHub Pages 링크로 대신했다.
 - ralplan 승인 gate가 R2와 R3에서 선택을 기록하지 못했고, 에이전트가 먼저 `handoff`로 바꾼 상태가 되돌려지지 않았다(`--force` 필요). 스펙의 `gjc ultragoal create-goals --brief-file`로 우회했다.
 - R3 ralplan 기록에 stage-01 planner가 잘못된 내용(경로 문자열)으로 남았고, 두 번째 critic이 architect 타입으로 기록됐다.
 - 에이전트가 `design-v3` 커밋 없이 기획서 변경을 goal-4·goal-5 커밋에 섞었고, 4장에 R1 시절 문구("R2 이후에 그린다")가 남았다. 사람이 짚은 뒤 `design-v3`로 정리했다 (`8515635`).
