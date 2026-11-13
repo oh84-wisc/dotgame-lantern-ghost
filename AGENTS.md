@@ -12,7 +12,7 @@
 ## 코드 규칙
 - HTML + Canvas 2D + JavaScript ES modules. 의존성 0. 빌드 없음.
 - src/logic.js 는 canvas를 모른다. 상태 객체를 받아 새 상태를 돌려주는 순수 함수만 둔다.
-- 맵은 GAME_DESIGN.md 5장의 문자 규자를 src/levels.js 에 그대로 복사한다. 좌표를 따로 적지 않는다.
+- 맵은 GAME_DESIGN.md 5장의 문자 규자를 src/levels.js 에 그대로 복사한다. 좌표를 따로 적지 않는다. 예외: 경비병 순찰 고리는 src/levels.js 의 `patrol` 좌표 배열로만 둔다 (맵 문자로 표현할 수 없음, 레이아웃마다 한 배열).
 - 스프라이트는 팔레트 인덱스 배열로 src/sprites.js 에 적는다. 이미지 파일 금지.
 - 색은 GAME_DESIGN.md 6장의 8색 hex만 쓴다.
 - 변수·함수 이름은 영문. UI 문구는 src/strings.js 한 군데.
