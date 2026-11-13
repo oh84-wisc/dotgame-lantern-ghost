@@ -7,6 +7,43 @@
   "session_id": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919",
   "active_skills": [
     {
+      "skill": "ralplan",
+      "phase": "planner",
+      "active": true,
+      "activated_at": "2026-11-12T05:37:05.015Z",
+      "updated_at": "2026-11-12T05:37:05.015Z",
+      "session_id": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919",
+      "hud": {
+        "version": 1,
+        "summary": "short run · automated",
+        "chips": [
+          {
+            "label": "stage",
+            "value": "planner",
+            "priority": 10
+          },
+          {
+            "label": "iter",
+            "value": "2",
+            "priority": 30
+          },
+          {
+            "label": "stages",
+            "value": "R·A·C·I·F",
+            "priority": 35
+          },
+          {
+            "label": "handoff",
+            "value": "off→off",
+            "priority": 45
+          }
+        ],
+        "updated_at": "2026-11-12T05:37:05.014Z"
+      },
+      "source_state_revision": 2,
+      "state_revision": 2
+    },
+    {
       "skill": "ultragoal",
       "phase": "blocked",
       "active": true,
@@ -66,6 +103,6 @@
     }
   ],
   "active_subskills": [],
-  "source_state_revision": 90,
-  "state_revision": 90
+  "source_state_revision": 92,
+  "state_revision": 92
 }

@@ -1,6 +1,6 @@
 {
   "session_id": "01a1cdd6-8f1e-7322-8fc2-f29d715aa919",
-  "updated_at": "2026-11-12T05:33:49.985Z",
-  "writer": "state-runtime",
-  "path": ".gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/state/ultragoal-state.json"
+  "updated_at": "2026-11-12T05:37:05.011Z",
+  "writer": "ralplan-runtime",
+  "path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1cdd6-8f1e-7322-8fc2-f29d715aa919/state/ralplan-state.json"
 }

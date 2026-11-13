@@ -5,51 +5,29 @@
   <title>Lantern Ghost</title>
   <style>
     html, body { margin: 0; }
+    body { font-family: monospace; text-align: center; }
     canvas { display: block; width: 320px; height: 240px; image-rendering: pixelated; margin: 0 auto; }
+    #hud { width: 320px; margin: 4px auto; display: flex; justify-content: space-between; }
+    #panel { position: absolute; left: 0; top: 0; width: 320px; height: 240px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+    #panel[hidden], #secondary[hidden] { display: none; }
+    button { font: inherit; padding: 4px 12px; cursor: pointer; }
+    .wrap { position: relative; width: 320px; margin: 0 auto; }
   </style>
 </head>
 <body>
-  <canvas id="screen" width="320" height="240"></canvas>
-  <script type="module">
-    import { LAYOUT_1 } from "./src/levels.js";
-    import { createState, moveGhost } from "./src/logic.js";
-    import { PALETTE, TILE_SIZE, tileColorIndex } from "./src/sprites.js";
-
-    const canvas = document.getElementById("screen");
-    const ctx = canvas.getContext("2d");
-    let state = createState(LAYOUT_1);
-
-    const KEY_TO_DIRECTION = {
-      ArrowUp: "up",
-      ArrowDown: "down",
-      ArrowLeft: "left",
-      ArrowRight: "right",
-    };
-
-    function draw() {
-      ctx.fillStyle = PALETTE[1];
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      state.grid.forEach((row, y) => {
-        for (let x = 0; x < row.length; x++) {
-          ctx.fillStyle = PALETTE[tileColorIndex(row[x])];
-          ctx.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-        }
-      });
-      ctx.fillStyle = PALETTE[6];
-      ctx.fillRect(state.ghost.x * TILE_SIZE, state.ghost.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-    }
-
-    window.addEventListener("keydown", (event) => {
-      const direction = KEY_TO_DIRECTION[event.key];
-      if (!direction) return;
-      event.preventDefault();
-      if (event.repeat) return; // one press = one tile; held-key repeat ignored
-      state = moveGhost(state, direction);
-      draw();
-    });
-
-    document.body.style.background = PALETTE[1];
-    draw();
-  </script>
+  <div class="wrap">
+    <canvas id="screen" width="320" height="240"></canvas>
+    <div id="panel" hidden>
+      <p id="panel-message"></p>
+      <p id="panel-detail"></p>
+      <button id="primary"></button>
+      <button id="secondary" hidden></button>
+    </div>
+  </div>
+  <div id="hud">
+    <span id="timer"></span>
+    <span id="candles"></span>
+  </div>
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>

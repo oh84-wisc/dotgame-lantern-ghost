@@ -1,0 +1,54 @@
+{
+  "active": true,
+  "current_phase": "handoff",
+  "skill": "ralplan",
+  "version": 2,
+  "mode": "short",
+  "interactive": false,
+  "task": "GAME_DESIGN.md v1 기준 R2 계획: goal-2 목표물·위협·타이머, goal-3 승패와 화면 전환. 각 goal 완료 조건은 브라우저에서 확인 가능한 문장",
+  "run_id": "01a1ce45-d178-759a-8b38-bcf30fc0c6fb",
+  "updated_at": "2026-11-12T10:01:15.613Z",
+  "repository_binding": {
+    "schema": "gjc.repository_binding.v1",
+    "worktreeRoot": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost",
+    "commonDir": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.git",
+    "displayPath": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost",
+    "head": "ace0312b4a4750cd7e41877ba71585dc3cf9ab52",
+    "branch": "master"
+  },
+  "session_id": "01a1ce45-d178-759a-8b38-bcf30fc0c6fb",
+  "receipt": {
+    "version": 1,
+    "skill": "ralplan",
+    "owner": "gjc-state-cli",
+    "command": "gjc state ralplan write",
+    "state_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1ce45-d178-759a-8b38-bcf30fc0c6fb/state/skill-active-state.json",
+    "storage_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1ce45-d178-759a-8b38-bcf30fc0c6fb/state/ralplan-state.json",
+    "mutated_at": "2026-11-12T10:01:15.613Z",
+    "fresh_until": "2026-11-12T10:31:15.613Z",
+    "status": "fresh",
+    "mutation_id": "ralplan:2026-11-12T10:01:15.613Z",
+    "content_sha256": {
+      "algorithm": "sha256",
+      "value": "dbd964f358f03582efd6deff4e06ab903a942c68f01685c0c539cac78271a9e4",
+      "covered_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1ce45-d178-759a-8b38-bcf30fc0c6fb/state/ralplan-state.json",
+      "computed_at": "2026-11-12T10:01:15.615Z"
+    }
+  },
+  "last_review_verdict": "OKAY",
+  "last_review_verdict_lane": "critic",
+  "last_review_verdict_stage_n": 3,
+  "auto_handoff": {
+    "configuredTarget": "off",
+    "effectiveTarget": "off",
+    "degradationReason": null,
+    "source": "default"
+  },
+  "final_admission_phase_transition": {
+    "run_id": "01a1ce45-d178-759a-8b38-bcf30fc0c6fb",
+    "final_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1ce45-d178-759a-8b38-bcf30fc0c6fb/plans/ralplan/01a1ce45-d178-759a-8b38-bcf30fc0c6fb/stage-04-final.md",
+    "final_sha256": "2870d58bc2964816612ab3baaece8e59fb658cb31941b68523be2a20fe6cb06c",
+    "auto_handoff_sha256": "baf1bde06b9be0458d9d81bf55e067158d2cf07d30b198d609a3dec519b416b1"
+  },
+  "state_revision": 1
+}
