@@ -1,4 +1,4 @@
-// Browser glue: input, timer frames, drawing, and screen panels. Rules live in logic.js.
+// Browser glue: input, timer frames, drawing, sound, high score, and screen panels. Rules live in logic.js.
 import {
   createState,
   stepTurn,
@@ -13,7 +13,9 @@ import {
   TOTAL_CANDLES,
 } from "./logic.js";
 import { PALETTE, TILE_SIZE, tileColorIndex, candleColorIndex } from "./sprites.js";
-import { STRINGS, timerText, candleText, totalCandleText } from "./strings.js";
+import { STRINGS, timerText, candleText, totalCandleText, highScoreText } from "./strings.js";
+import { readHighScore, writeHighScore, nextHighScore } from "./score.js";
+import { unlockAudio, playCandle, playClear, playLose, playWin } from "./audio.js";
 
 const MOVE_LOCK_MS = 120; // GAME_DESIGN.md chapter 2: one tile takes 120 ms; keys during the move are ignored.
 
@@ -31,10 +33,12 @@ const hudCandles = document.getElementById("candles");
 const panel = document.getElementById("panel");
 const panelMessage = document.getElementById("panel-message");
 const panelDetail = document.getElementById("panel-detail");
+const panelHighScore = document.getElementById("panel-highscore");
 const primaryButton = document.getElementById("primary");
 const secondaryButton = document.getElementById("secondary");
 
 let state = createState(0);
+let highScore = readHighScore();
 let lockedUntil = 0;
 let lastFrame = performance.now();
 let shownScreen = null;
@@ -90,14 +94,16 @@ function renderPanel() {
     if (state.screen === "start") {
       panelMessage.textContent = STRINGS.title;
       panelDetail.textContent = "";
+      panelHighScore.textContent = "";
       primaryButton.textContent = STRINGS.start;
       secondaryButton.hidden = true;
     } else {
-      panelMessage.textContent = state.screen === "win" ? STRINGS.win : STRINGS.lose;
+      panelMessage.textContent = state.screen === "win" ? STRINGS.final : STRINGS.lose;
       panelDetail.textContent =
         state.screen === "win"
           ? totalCandleText(runScore(state), TOTAL_CANDLES)
           : candleText(runScore(state), TOTAL_CANDLES);
+      panelHighScore.textContent = highScoreText(highScore);
       primaryButton.textContent = STRINGS.restart;
       secondaryButton.textContent = STRINGS.home;
       secondaryButton.hidden = false;
@@ -106,10 +112,35 @@ function renderPanel() {
   shownScreen = state.screen;
 }
 
+// A finished run (win or loss, including a 0 score) updates and saves the high score.
+function finishRun(finished) {
+  highScore = nextHighScore(highScore, runScore(finished));
+  writeHighScore(highScore);
+}
+
+// Sound and run-end effects for one state change. When one turn both ends the run and lights a
+// candle, only the end sound plays (GAME_DESIGN.md chapter 7).
+function applyEvents(prev, next) {
+  if (prev.screen !== "playing") return; // a finished run is handled once, when it ends
+  if (next.screen === "lose") {
+    playLose();
+    finishRun(next);
+  } else if (next.screen === "win") {
+    playWin();
+    finishRun(next);
+  } else if (next.layoutIndex > prev.layoutIndex) {
+    playClear();
+  } else if (next.lit.length > prev.lit.length) {
+    playCandle();
+  }
+}
+
 function frame(now) {
   const elapsed = now - lastFrame;
   lastFrame = now;
-  state = tick(state, elapsed);
+  const next = tick(state, elapsed);
+  applyEvents(state, next);
+  state = next;
   drawBoard();
   renderHud();
   if (state.screen !== shownScreen) renderPanel();
@@ -125,12 +156,18 @@ window.addEventListener("keydown", (event) => {
   if (now < lockedUntil) return;
   const next = stepTurn(state, direction);
   if (next === state) return; // wall or edge: no turn used
+  applyEvents(state, next);
   state = next;
   lockedUntil = now + MOVE_LOCK_MS;
 });
 
 primaryButton.addEventListener("click", () => {
-  state = state.screen === "start" ? startGame(state) : restartGame();
+  if (state.screen === "start") {
+    unlockAudio(); // AudioContext is created on a user gesture
+    state = startGame(state);
+  } else {
+    state = restartGame();
+  }
 });
 
 secondaryButton.addEventListener("click", () => {

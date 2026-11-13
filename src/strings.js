@@ -5,6 +5,7 @@ export const STRINGS = {
   restart: "다시 시작",
   home: "처음으로",
   win: "승리",
+  final: "모든 저택을 밝혔다",
   lose: "패배",
 };
 
@@ -18,4 +19,8 @@ export function candleText(lit, total) {
 
 export function totalCandleText(lit, total) {
   return `총 켜진 촛불 ${lit}/${total}`;
+}
+
+export function highScoreText(score) {
+  return `최고 점수 ${score}`;
 }
