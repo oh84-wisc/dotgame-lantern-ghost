@@ -36,12 +36,12 @@
   "nudge_target_kind": "story",
   "latestLedgerEvent": {
     "event": "goal_checkpointed",
-    "goalId": "G001",
-    "timestamp": "2026-11-13T02:54:59.522Z",
-    "evidence": "Acceptance AC-4.1..4.9 and AC-5.1..5.8 passed in the user's browser (2026-11-13). Complete checkpoint refused: 'unable to resolve an authoritative integration base' (repo has no remote; quality-gate architectReview and executorQa not run). Kept blocked per instruction. Commits c688ae3, 4f41971, and the AGENTS.md exception commit; node --test test/ 43 pass."
+    "goalId": "G002",
+    "timestamp": "2026-11-13T04:47:55.004Z",
+    "evidence": "Restoring G002 to pending: complete checkpoint refused (quality-gate evidence missing)."
   },
   "version": 2,
-  "updated_at": "2026-11-13T02:54:59.532Z",
+  "updated_at": "2026-11-13T04:47:55.014Z",
   "receipt": {
     "version": 1,
     "skill": "ultragoal",
@@ -49,21 +49,21 @@
     "command": "gjc ultragoal (reconcile)",
     "state_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/state/skill-active-state.json",
     "storage_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/state/ultragoal-state.json",
-    "mutated_at": "2026-11-13T02:54:59.532Z",
-    "fresh_until": "2026-11-13T03:24:59.532Z",
+    "mutated_at": "2026-11-13T04:47:55.014Z",
+    "fresh_until": "2026-11-13T05:17:55.014Z",
     "status": "fresh",
-    "mutation_id": "ultragoal:reconcile:2026-11-13T02:54:59.532Z",
+    "mutation_id": "ultragoal:reconcile:2026-11-13T04:47:55.014Z",
     "verb": "reconcile",
-    "from_phase": "pending",
+    "from_phase": "active",
     "to_phase": "blocked",
     "forced": true,
     "content_sha256": {
       "algorithm": "sha256",
-      "value": "e50bcc5a85c283f0af77d2899761902ea08f6804ffba66256b761a2efcf4d619",
+      "value": "e08bf962ec624046a57965be7879e0a7a7944e3dbf526bca5c751d2f827e7509",
       "covered_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/state/ultragoal-state.json",
-      "computed_at": "2026-11-13T02:54:59.532Z"
+      "computed_at": "2026-11-13T04:47:55.014Z"
     }
   },
   "session_id": "01a1d293-5d15-756b-9f5e-15e8faee8f4b",
-  "state_revision": 10
+  "state_revision": 12
 }

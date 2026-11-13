@@ -19,16 +19,17 @@
       "objective": "Human-only steps: (1) the user approves the one-line AGENTS.md patrol-coordinate exception so it can be committed; (2) a human plays http://localhost:8000 and confirms AC-4.1 to AC-4.9 and AC-5.1 to AC-5.8 in GAME_DESIGN.md chapter 9. No autonomous work remains in this subgoal.",
       "status": "pending",
       "createdAt": "2026-11-13T02:11:43.164Z",
-      "updatedAt": "2026-11-13T02:11:43.164Z",
+      "updatedAt": "2026-11-13T04:47:54.985Z",
       "steering": {
         "kind": "add_subgoal",
         "evidence": "Code and tests complete (43 pass); both goal commits exist; remaining steps require a human per AGENTS.md completion rules.",
         "rationale": "Splits the human-only acceptance steps out of G001 so the pause gate sees no resolvable autonomous work."
-      }
+      },
+      "evidence": "Restoring G002 to pending: complete checkpoint refused (quality-gate evidence missing)."
     }
   ],
   "createdAt": "2026-11-13T02:04:22.416Z",
-  "updatedAt": "2026-11-13T02:54:59.500Z",
+  "updatedAt": "2026-11-13T04:47:54.985Z",
   "repositoryBinding": {
     "schema": "gjc.repository_binding.v1",
     "worktreeRoot": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost",
@@ -37,5 +38,5 @@
     "head": "a27754a676bb5d47789a418ebe4ba208ba5ee9f3",
     "branch": "master"
   },
-  "state_revision": 3
+  "state_revision": 5
 }

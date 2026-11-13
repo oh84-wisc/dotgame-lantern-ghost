@@ -2,8 +2,8 @@
   "skill": "ultragoal",
   "phase": "blocked",
   "active": true,
-  "activated_at": "2026-11-13T02:54:59.539Z",
-  "updated_at": "2026-11-13T02:54:59.539Z",
+  "activated_at": "2026-11-13T04:47:55.020Z",
+  "updated_at": "2026-11-13T04:47:55.020Z",
   "session_id": "01a1d293-5d15-756b-9f5e-15e8faee8f4b",
   "hud": {
     "version": 1,
@@ -31,11 +31,11 @@
       },
       {
         "label": "ledger",
-        "value": "goal_checkpointed:G001",
+        "value": "goal_checkpointed:G002",
         "priority": 35
       }
     ],
-    "updated_at": "2026-11-13T02:54:59.538Z"
+    "updated_at": "2026-11-13T04:47:55.019Z"
   },
   "receipt": {
     "version": 1,
@@ -44,15 +44,15 @@
     "command": "gjc ultragoal (reconcile)",
     "state_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/state/skill-active-state.json",
     "storage_path": "/Users/sunkeunoh/Documents/bootcamp/week2_hw/hw2/dotgame-lantern-ghost/.gjc/_session-01a1d293-5d15-756b-9f5e-15e8faee8f4b/state/ultragoal-state.json",
-    "mutated_at": "2026-11-13T02:54:59.532Z",
-    "fresh_until": "2026-11-13T03:24:59.532Z",
+    "mutated_at": "2026-11-13T04:47:55.014Z",
+    "fresh_until": "2026-11-13T05:17:55.014Z",
     "status": "fresh",
-    "mutation_id": "ultragoal:reconcile:2026-11-13T02:54:59.532Z",
+    "mutation_id": "ultragoal:reconcile:2026-11-13T04:47:55.014Z",
     "verb": "reconcile",
     "forced": true,
-    "from_phase": "pending",
+    "from_phase": "active",
     "to_phase": "blocked"
   },
-  "source_state_revision": 18,
-  "state_revision": 10
+  "source_state_revision": 20,
+  "state_revision": 12
 }
